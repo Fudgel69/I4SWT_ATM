@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
+    //Time-klasse som består af tidsenheder fra år til millisekunder
     public class Time
     {
+        //Alle private members (tidsenheder fra år til millisekunder)
         public int Year { get; set; }
         public int Month { get; set; }
         public int Day { get; set; }
@@ -16,24 +18,26 @@ namespace ATM_Class
         public int Second { get; set; }
         public int MilliSecond { get; set; }
 
-        public Time(string timestamp)
+        //Constructor for Time, her parses en string og udfra denne bliver de tilsvarende private members sat
+        public Time(string t)
         {
-            Year = int.Parse(timestamp.Substring(0, 4));
-            Month = int.Parse(timestamp.Substring(4, 2));
-            Day = int.Parse(timestamp.Substring(6, 2));
-            Hour = int.Parse(timestamp.Substring(8, 2));
-            Minute = int.Parse(timestamp.Substring(10, 2));
-            Second = int.Parse(timestamp.Substring(12, 2));
-            MilliSecond = int.Parse(timestamp.Substring(14, 3));
+            Year = int.Parse(t.Substring(0, 4));
+            Month = int.Parse(t.Substring(4, 2));
+            Day = int.Parse(t.Substring(6, 2));
+            Hour = int.Parse(t.Substring(8, 2));
+            Minute = int.Parse(t.Substring(10, 2));
+            Second = int.Parse(t.Substring(12, 2));
+            MilliSecond = int.Parse(t.Substring(14, 3));
         }
 
-        public double CalculateTimeDiffrenceinSeconds(Time time)
+        //Funktion til udregning af tidsforskel på nuværende og parset tid i sekunder
+        public double TimeDifferenceSec(Time t)
         {
-            double result = (Day - time.Day) * 24 * 60 * 60;
-            result += (Hour - time.Hour) * 60 * 60;
-            result += (Minute - time.Minute) * 60;
-            result += (Second - time.Second);
-            result += (MilliSecond - time.MilliSecond) / 1000;
+            double result = (Day - t.Day) * 24 * 60 * 60;
+            result += (Hour - t.Hour) * 60 * 60;
+            result += (Minute - t.Minute) * 60;
+            result += (Second - t.Second);
+            result += (MilliSecond - t.MilliSecond) / 1000;
 
             return result;
         }

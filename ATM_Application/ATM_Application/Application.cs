@@ -12,10 +12,7 @@ namespace ATM_Application
     {
         static void Main(string[] args)
         {
-            //ITransponderReceiver navn = TransponderReceiverFactory.CreateTransponderDataReceiver();
 
-            //navn.TransponderDataReady += navn_DataReady;
-            //Console.ReadKey();
             AirspaceMonitor flightConverter = new AirspaceMonitor(TransponderReceiverFactory.CreateTransponderDataReceiver());
             Console.ReadLine();
 

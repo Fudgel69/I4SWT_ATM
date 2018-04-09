@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
+    //Track-klasse som holder styr på et bestemt fly
     public class Track : ITrack
     {
+
+        //Her initieres alle elementerne som et fly-track består af
         private string _Tag { get; set; }
         private Position _CurrentPosition { get; set; }
         private Position _OldPosition { get; set; }
@@ -16,7 +19,7 @@ namespace ATM_Class
         private Time _CurrentTime { get; set; }
         private Time _OldTime { get; set; }
 
-
+        //I denne region er der lavet get- og set-metoder til alle de private members
         #region Get/Set metoder
 
         public string Tag
@@ -62,15 +65,16 @@ namespace ATM_Class
         }
         #endregion
 
-
+        //Track-constructor
         public Track(string _tag, int x, int y, int _altitude, Time timestamp)
         {
-            Tag = _tag;
-
+            //Alle members sættes
             CurrentPosition = new Position();
             OldPosition = new Position();
             CurrentSpeed = new Speed();
             CurrentCourse = new Course();
+
+            Tag = _tag;
 
             CurrentPosition.X = x;
             CurrentPosition.Y = y;
@@ -82,18 +86,24 @@ namespace ATM_Class
 
         }
 
+        //En metode til at opdatere et tracks members
         public void UpdateTrack(string tag, int x, int y, int z, Time _time)
         {
+            //Her anvendes en hjælpefunktion til at sætte "Old"-members
             PutIntoOld(CurrentPosition, CurrentTime);
+
             CurrentPosition.X = x;
             CurrentPosition.Y = y;
             CurrentPosition.Altitude = z;
+
             CurrentTime = _time;
+
+            //Hastighed og kurs udregnes
             CurrentSpeed.CalculateSpeed(CurrentPosition, OldPosition, CurrentTime, OldTime);
             CurrentCourse.CalculateCourse(CurrentPosition, OldPosition);
         }
 
-
+        //Hjælpefunktion der sætte current time til og position til old, således at Track kan opdateres
         private void PutIntoOld(Position pos, Time time)
         {
             OldPosition.Y = pos.Y;
@@ -108,6 +118,7 @@ namespace ATM_Class
             OldTime.Year = time.Year;
         }
 
+        //Udskriver et track
         public void PrintTrack()
         {
             Console.WriteLine($"Tag: {Tag} \r\nPosition (X/Y): {CurrentPosition.X} m / {CurrentPosition.Y} m\r\nAltitude: {CurrentPosition.Altitude}\r\nVelocity: {CurrentSpeed._speed} m/s\r\nCourse: {CurrentCourse._course} degrees\r\n\r\n");

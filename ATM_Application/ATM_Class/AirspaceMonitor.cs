@@ -13,31 +13,36 @@ namespace ATM_Class
         ITransponderReceiver _transponderReceiver;
 
         public delegate void TrackEnteredAirspaceHandler();
-
         public delegate void TrackLeftAirspaceHandler();
 
-
         public event TrackEnteredAirspaceHandler TrackEnteredAirspace;
-        protected virtual void OnTrackEnteredAirspace()
-        {
-            TrackEnteredAirspace?.Invoke();
-            Console.WriteLine("FLYYYYY!!");
-        }
 
+        //En liste af trackede fly i vores monitor
         public List<ITrack> Tracks { get; set; }
 
+
+        //Constructor-klasse for Monitor
         public AirspaceMonitor(ITransponderReceiver transponderReceiver)
         {
             _transponderReceiver = transponderReceiver;
             Tracks = new List<ITrack>();
 
+            //Subscriber til et event
             transponderReceiver.TransponderDataReady += OnTransponderDataReady; // subscribe to event
         }
 
-        private void OnTransponderDataReady(object sender, RawTransponderDataEventArgs rawTransponderDataEventArgs)
+        //Et fly er inde i det valgte område
+        protected virtual void PlaneEnteredAirspace()
+        {
+            TrackEnteredAirspace?.Invoke();
+            Console.WriteLine("Der kommer FLYYYYY!!");
+        }
+
+
+        private void OnTransponderDataReady(object sender, RawTransponderDataEventArgs e)
         {
             // formatting data for use
-            foreach (string rawdata in rawTransponderDataEventArgs.TransponderData)
+            foreach (string rawdata in e.TransponderData)
             {
                 string[] rawData = rawdata.Split(';');
                 List<string> data = rawData.ToList();
@@ -50,7 +55,7 @@ namespace ATM_Class
                     {
                         Track AlreadyKnownTrack = (Track)Tracks.First(track => track.Tag == data[0]); // finds existing track with 'Tag'
                         AlreadyKnownTrack.UpdateTrack(data[0], int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]), new Time(data[4])); // updated old track instead of making new entry
-                        OnTrackEnteredAirspace();
+                        PlaneEnteredAirspace();
                     }
                     else
                     {
@@ -63,11 +68,6 @@ namespace ATM_Class
                     }
                 }
 
-                // determine type of event
-
-                // log event to file
-
-                // render current events to screen
             }
         }
     }
