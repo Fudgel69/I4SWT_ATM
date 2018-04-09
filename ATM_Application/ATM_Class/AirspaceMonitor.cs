@@ -10,7 +10,7 @@ namespace ATM_Class
 {
     public class AirspaceMonitor
     {
-        ITransponderReceiver _transponderReceiver;
+        ITransponderReceiver _TransponderReceiver;
 
         public delegate void TrackEnteredAirspaceHandler();
         public delegate void TrackLeftAirspaceHandler();
@@ -24,7 +24,7 @@ namespace ATM_Class
         //Constructor-klasse for Monitor
         public AirspaceMonitor(ITransponderReceiver transponderReceiver)
         {
-            _transponderReceiver = transponderReceiver;
+            _TransponderReceiver = transponderReceiver;
             Tracks = new List<ITrack>();
 
             //Subscriber til et event
