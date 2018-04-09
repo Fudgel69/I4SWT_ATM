@@ -36,7 +36,5 @@ namespace ATM_Class
 
         #endregion
 
-
-
     }
 }
