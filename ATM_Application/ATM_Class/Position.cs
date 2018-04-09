@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    class Position
+    public class Position
     {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Altitude { get; set; }
     }
 }
