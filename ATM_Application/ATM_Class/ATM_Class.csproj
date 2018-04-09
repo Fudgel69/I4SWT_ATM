@@ -43,14 +43,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirspaceMonitor.cs" />
-    <Compile Include="Course.cs" />
-    <Compile Include="ITrack.cs" />
-    <Compile Include="Position.cs" />
+    <Compile Include="Classes\AirspaceMonitor.cs" />
+    <Compile Include="Classes\Course.cs" />
+    <Compile Include="Interfaces\ICourse.cs" />
+    <Compile Include="Interfaces\IPosition.cs" />
+    <Compile Include="Interfaces\ISpeed.cs" />
+    <Compile Include="Interfaces\ITime.cs" />
+    <Compile Include="Interfaces\ITrack.cs" />
+    <Compile Include="Classes\Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Speed.cs" />
-    <Compile Include="Time.cs" />
-    <Compile Include="Track.cs" />
+    <Compile Include="Classes\Speed.cs" />
+    <Compile Include="Classes\Time.cs" />
+    <Compile Include="Classes\Track.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

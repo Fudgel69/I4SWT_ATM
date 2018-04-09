@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    public class Speed
+    public class Speed : ISpeed
     {
         //Flyets hastighed i m/s
-        public double _speed;
+        public double _speed { get; set; }
+
         //Udregner flyets hastighed i m/s
         public void CalculateSpeed(Position CurrentPosition, Position OldPosition, Time CurrentTime, Time OldTime)
         {

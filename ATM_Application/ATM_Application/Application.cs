@@ -10,20 +10,11 @@ namespace ATM_Application
 {
     class Application
     {
+        //Mainprogrammet opretter et nyt luftrum som kan blive overvåget
         static void Main(string[] args)
         {
-
             AirspaceMonitor flightConverter = new AirspaceMonitor(TransponderReceiverFactory.CreateTransponderDataReceiver());
             Console.ReadLine();
-
-        }
-
-        static void navn_DataReady(object sender, RawTransponderDataEventArgs e)
-        {
-            foreach (var VARIABLE in e.TransponderData)
-            {
-                Console.WriteLine(VARIABLE);
-            }
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ATM_Class
 {
     //Klassen position der består af flyet som vist i et 3-dimentionelt plan, hvor x- y- og z/altitude-koordinaterne er flyets placering
-    public class Position
+    public class Position : IPosition
     {
         private int _X { get; set; }
         private int _Y { get; set; }

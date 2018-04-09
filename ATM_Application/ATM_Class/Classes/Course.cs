@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    public class Course
+    public class Course : ICourse
     {
         //Flyets kurs i grader
-        public double _course;
+        public double _course { get; set; }
 
         //Udregner flyets kurs i grader
         public void CalculateCourse(Position CurrentPosition, Position OldPosition)

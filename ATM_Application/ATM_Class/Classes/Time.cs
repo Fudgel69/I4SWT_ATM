@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ATM_Class
 {
     //Time-klasse som består af tidsenheder fra år til millisekunder
-    public class Time
+    public class Time : ITime
     {
         //Alle private members (tidsenheder fra år til millisekunder)
         public int Year { get; set; }
