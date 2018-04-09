@@ -110,9 +110,8 @@ namespace ATM_Class
 
         public void PrintTrack()
         {
-            Console.WriteLine($"Tag: {Tag} \r\nPosition (X/Y): {CurrentPosition.X}m/{CurrentPosition.Y}m\r\nAltitude: {CurrentPosition.Altitude}\r\nVelocity: {CurrentSpeed._speed}m/s\r\nCourse: {CurrentCourse._course}degrees\r\n\r\n");
+            Console.WriteLine($"Tag: {Tag} \r\nPosition (X/Y): {CurrentPosition.X} m / {CurrentPosition.Y} m\r\nAltitude: {CurrentPosition.Altitude}\r\nVelocity: {CurrentSpeed._speed} m/s\r\nCourse: {CurrentCourse._course} degrees\r\n\r\n");
         }
-
 
     }
 }
