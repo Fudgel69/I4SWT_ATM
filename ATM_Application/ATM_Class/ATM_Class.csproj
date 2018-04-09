@@ -43,8 +43,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FlightConverter.cs" />
+    <Compile Include="AirspaceMonitor.cs" />
+    <Compile Include="Course.cs" />
+    <Compile Include="ITrack.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Speed.cs" />
+    <Compile Include="Time.cs" />
     <Compile Include="Track.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

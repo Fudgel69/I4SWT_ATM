@@ -6,88 +6,113 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    public class Track
+    public class Track : ITrack
     {
+        private string _Tag { get; set; }
+        private Position _CurrentPosition { get; set; }
+        private Position _OldPosition { get; set; }
+        private Speed _CurrentSpeed { get; set; }
+        private Course _CurrentCourse { get; set; }
+        private Time _CurrentTime { get; set; }
+        private Time _OldTime { get; set; }
 
-        public Position Position { get; set; }
-        public Position OldPosition { get; set; }
-        public double Velocity { get; set; }
-        public double CurCompasCourse { get; set; }
-        public Time TimeStamp { get; set; }
-        public Time OldTimeStamp { get; set; }
 
-        private string tag;
-        private int x, y, altitude;
-        private DateTime currentTime;
+        #region Get/Set metoder
 
         public string Tag
         {
-            get => tag;
-            set => tag = value;
+            get => _Tag;
+            set => _Tag = value;
         }
 
-        public int XCoord
+        public Position CurrentPosition
         {
-            get => x;
-            set => x = value;
+            get => _CurrentPosition;
+            set => _CurrentPosition = value;
         }
 
-        public int YCoord
+        public Position OldPosition
         {
-            get => y;
-            set => y = value;
-        }
+            get => _OldPosition;
+            set => _OldPosition = value;
 
-        public int Altitude
+        }
+        public Speed CurrentSpeed
         {
-            get => altitude;
-            set => altitude = value;
+            get => _CurrentSpeed;
+            set => _CurrentSpeed = value;
         }
 
-        public DateTime CurrentTime
+        public Course CurrentCourse
         {
-            get => currentTime;
-            set => currentTime = value;
+            get => _CurrentCourse;
+            set => _CurrentCourse = value;
         }
 
-        public Track(string _tag, int _xcoord, int _ycoord, int _altitude, DateTime _currentTime)
+        public Time CurrentTime
         {
-            tag = _tag;
-            x = _xcoord;
-            y = _ycoord;
-            altitude = _altitude;
-            currentTime = _currentTime;
+            get => _CurrentTime;
+            set => _CurrentTime = value;
         }
 
-        public override string ToString()
+        public Time OldTime
         {
-            return String.Format($"Tag: {tag} \r\nX coordinate: {x} meters \r\nY coordinate: {y} meters \r\nAltitude: {altitude} meters \r\nTimestamp: {currentTime.Day}/{currentTime.Month}/{currentTime.Year}, at {currentTime.Hour}:{currentTime.Minute}:{currentTime.Second}\r\n");
+            get => _OldTime;
+            set => _OldTime = value;
         }
+        #endregion
 
-        public void UpdateTrack(string tag, int x, int y, int z, TimeStamp timestamp)
+
+        public Track(string _tag, int x, int y, int _altitude, Time timestamp)
         {
-            PutIntoOld(Position, TimeStamp);
-            Position.XKoordinate = x;
-            Position.YKoordinate = y;
-            Position.ZKoordinate = z;
-            TimeStamp = timestamp;
-            CalculateVelocity();
-            CalculateCompasCourse();
+            Tag = _tag;
+
+            CurrentPosition = new Position();
+            OldPosition = new Position();
+            CurrentSpeed = new Speed();
+            CurrentCourse = new Course();
+
+            CurrentPosition.X = x;
+            CurrentPosition.Y = y;
+            CurrentPosition.Altitude = _altitude;
+
+            CurrentTime = new Time("00000000000000000");
+            OldTime = new Time("00000000000000000");
+            CurrentTime = timestamp;
+
         }
 
-
-        private void PutIntoOld(Position pos, TimeStamp time)
+        public void UpdateTrack(string tag, int x, int y, int z, Time _time)
         {
-            OldPosition.YKoordinate = pos.YKoordinate;
-            OldPosition.XKoordinate = pos.XKoordinate;
-            OldPosition.ZKoordinate = pos.ZKoordinate;
-            OldTimeStamp.Day = time.Day;
-            OldTimeStamp.Hour = time.Hour;
-            OldTimeStamp.MilliSecond = time.MilliSecond;
-            OldTimeStamp.Minute = time.Minute;
-            OldTimeStamp.Month = time.Month;
-            OldTimeStamp.Second = time.Second;
-            OldTimeStamp.Year = time.Year;
+            PutIntoOld(CurrentPosition, CurrentTime);
+            CurrentPosition.X = x;
+            CurrentPosition.Y = y;
+            CurrentPosition.Altitude = z;
+            CurrentTime = _time;
+            CurrentSpeed.CalculateSpeed(CurrentPosition, OldPosition, CurrentTime, OldTime);
+            CurrentCourse.CalculateCourse(CurrentPosition, OldPosition);
         }
+
+
+        private void PutIntoOld(Position pos, Time time)
+        {
+            OldPosition.Y = pos.Y;
+            OldPosition.X = pos.X;
+            OldPosition.Altitude = pos.Altitude;
+            OldTime.Day = time.Day;
+            OldTime.Hour = time.Hour;
+            OldTime.MilliSecond = time.MilliSecond;
+            OldTime.Minute = time.Minute;
+            OldTime.Month = time.Month;
+            OldTime.Second = time.Second;
+            OldTime.Year = time.Year;
+        }
+
+        public void PrintTrack()
+        {
+            Console.WriteLine($"Tag: {Tag} \r\nPosition (X/Y): {CurrentPosition.X}m/{CurrentPosition.Y}m\r\nAltitude: {CurrentPosition.Altitude}\r\nVelocity: {CurrentSpeed._speed}m/s\r\nCourse: {CurrentCourse._course}degrees\r\n\r\n");
+        }
+
+
     }
 }
