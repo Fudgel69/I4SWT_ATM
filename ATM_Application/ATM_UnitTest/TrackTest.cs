@@ -34,7 +34,7 @@ namespace ATM_UnitTest
             _timeStamp = _list[4];
             _position = new Position();
          
-            _track = new Track(_tag, int.Parse(_x), int.Parse(_y), int.Parse(_altitude), Time _timeStamp);
+            _track = new Track(_tag, int.Parse(_x), int.Parse(_y), int.Parse(_altitude), new Time(_timeStamp));
 
         }
 
