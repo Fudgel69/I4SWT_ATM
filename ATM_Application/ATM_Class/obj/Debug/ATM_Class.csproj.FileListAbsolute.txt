@@ -1,0 +1,6 @@
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\ATM_Class.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\ATM_Class.pdb
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\TransponderReceiver.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csprojResolveAssemblyReference.cache
+D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.pdb
