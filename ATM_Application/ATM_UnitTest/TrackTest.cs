@@ -12,31 +12,72 @@ namespace ATM_UnitTest
     [TestFixture]
     class TrackTest
     {
-        private string _tag;
-        private string _x;
-        private string _y;
-        private string _altitude;
-        private string _timeStamp;
+        private string _tag = "AC420";
+        private int _x = 20000;
+        private int _y = 20000;
+        private int _altitude = 10000;
+        private Time _timeStamp = new Time("20181004095400000");
 
-        private IPosition _position;
-        private ITrack _track;
+        private Track _track;
 
         private List<string> _list;
 
         [SetUp]
         public void Setup()
         {
-            _list = new List<string>{"Simon", "60000", "20000", "5000", "20180409235530065" };
-            _tag = _list[0];
-            _x = _list[1];
-            _y = _list[2];
-            _altitude = _list[3];
-            _timeStamp = _list[4];
-            _position = new Position();
-         
-            _track = new Track(_tag, int.Parse(_x), int.Parse(_y), int.Parse(_altitude), new Time(_timeStamp));
-
+            _track = new Track(_tag, _x, _y, _altitude, _timeStamp);
         }
+
+        [Test]
+        public void ChangePositionSpeedChanges()
+        {
+            double OldSpeed = _track.CurrentSpeed._speed;
+            _track.UpdateTrack(_tag, 10000, 10000, 5000, _timeStamp);
+            Assert.That(OldSpeed, !Is.EqualTo(_track.CurrentSpeed._speed));
+        }
+
+        [Test]
+        public void ChangePositionCourseChanges()
+        {
+            double OldCourse = _track.CurrentCourse._course;
+            _track.UpdateTrack(_tag, 10000, 10000, 5000, _timeStamp);
+            Assert.That(OldCourse, !Is.EqualTo(_track.CurrentCourse._course));
+        }
+
+        [Test]
+        public void UpdateTrackChangesPositionX()
+        {
+            int OldX = _track.CurrentPosition.X;
+            _track.UpdateTrack(_tag, 10000, 10000, 5000, _timeStamp);
+            Assert.That(OldX, !Is.EqualTo(_track.CurrentPosition.X));
+        }
+
+        [Test]
+        public void UpdateTrackChangesPositionY()
+        {
+            int OldY = _track.CurrentPosition.Y;
+            _track.UpdateTrack(_tag, 10000, 10000, 5000, _timeStamp);
+            Assert.That(OldY, !Is.EqualTo(_track.CurrentPosition.Y));
+        }
+
+        [Test]
+        public void UpdateTrackChangesPositionAltitude()
+        {
+            int OldAltitude = _track.CurrentPosition.Altitude;
+            _track.UpdateTrack(_tag, 10000, 10000, 5000, _timeStamp);
+            Assert.That(OldAltitude, !Is.EqualTo(_track.CurrentPosition.Altitude));
+        }
+
+        [Test]
+        public void UpdateTrackChangesTime()
+        {
+            Time OldTime = _track.CurrentTime;
+            Time NewTime = new Time("20191105101512345");
+            _track.UpdateTrack(_tag, 10000, 10000, 5000, NewTime);
+
+            Assert.That(OldTime, !Is.EqualTo(_track.CurrentTime));
+        }
+
 
 
     }
