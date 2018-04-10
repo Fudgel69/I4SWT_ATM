@@ -11,5 +11,7 @@ namespace ATM_Class
     {
         int X { get; set; }
         int Y { get; set; }
+        int Altitude { get; set; }
+        void SetPosition(int x, int y, int alt);
     }
 }

@@ -12,5 +12,8 @@ namespace ATM_Class
         int Hour { get; set; }
         int Minute { get; set; }
 
+        double TimeDifferenceSec(Time t);
     }
+
+
 }

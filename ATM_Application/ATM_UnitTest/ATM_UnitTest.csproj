@@ -64,10 +64,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpeedTest.cs" />
     <Compile Include="TimeTest.cs" />
+    <Compile Include="TrackTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ATM_Class\ATM_Class.csproj">
+      <Project>{794abb67-8191-46f1-b595-0e91033dc683}</Project>
+      <Name>ATM_Class</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -36,5 +36,12 @@ namespace ATM_Class
 
         #endregion
 
+        public void SetPosition(int x, int y, int alt)
+        {
+            X = x;
+            Y = y;
+            Altitude = alt;
+        }
+
     }
 }
