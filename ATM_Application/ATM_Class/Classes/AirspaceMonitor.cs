@@ -39,6 +39,22 @@ namespace ATM_Class
         }
 
 
+        public void CreateOrUpdate(List<String> data)
+        {
+            if (Tracks.Any(track => track.Tag == data[0]))
+            {
+                //Hvis flyet allerede er tracket, vil dennes data blive opdateret
+                Track TrackToUpdate = (Track)Tracks.First(track => track.Tag == data[0]);
+                TrackToUpdate.UpdateTrack(data[0], int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]), new Time(data[4]));
+                PlaneEnteredAirspace();
+            }
+            else
+            {
+                //Hvis ikke flyet eksisterer vil der blive skabt et nyt track af dette
+                Tracks.Add(new Track(data[0], int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]), new Time(data[4])));
+            }
+        }
+
         private void TransponderDataEvent(object sender, RawTransponderDataEventArgs e)
         {
             foreach (String planeData in e.TransponderData)
@@ -49,19 +65,7 @@ namespace ATM_Class
                 //Sikrer sig at flyet er i Monitor-zonen
                 if (int.Parse(data[1]) >= 10000 && int.Parse(data[1]) <= 90000 && int.Parse(data[2]) >= 10000 && int.Parse(data[2]) <= 90000 && int.Parse(data[3]) >= 500 && int.Parse(data[3]) <= 20000)
                 {
-                    //Finder ud af om flyet allerede er tracket
-                    if (Tracks.Any(track => track.Tag == data[0]))
-                    {
-                        //Hvis flyet allerede er tracket, vil dennes data blive opdateret
-                        Track TrackToUpdate = (Track)Tracks.First(track => track.Tag == data[0]); 
-                        TrackToUpdate.UpdateTrack(data[0], int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]), new Time(data[4])); 
-                        PlaneEnteredAirspace();
-                    }
-                    else
-                    {
-                        //Hvis ikke flyet eksisterer vil der blive skabt et nyt track af dette
-                        Tracks.Add(new Track(data[0], int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]), new Time(data[4])));
-                    }
+                    CreateOrUpdate(data);
 
                     //Printer alle fly i Monitor-zonen når et fly bliver opdateret
                     foreach (Track t in Tracks)
