@@ -12,24 +12,30 @@ namespace ATM_UnitTest
     [TestFixture]
     class SpeedTest
     {
-        private Speed _speed;
+        private Speed _speed = new Speed();
         
-        private Position CurPos;
-        private Position OldPos;
-        private Time CurTime;
-        private Time OldTime;
+        private Position CurPos = new Position();
+        private Position OldPos = new Position();
+        private Time CurTime = new Time("20181004095100000");
+        private Time OldTime = new Time("20181004085100000");
+
+
         
 
         [SetUp]
         public void Setup()
         {
-            _speed.CalculateSpeed(CurPos, OldPos, CurTime, OldTime);
+            CurPos.SetPosition(56000, 20000, 10000);
+            OldPos.SetPosition(20000, 20000, 10000 );
         }
 
 
         [Test]
         public void TestCalculateSpeed()
         {
+            double expectedSpeed = 10.00;
+            _speed.CalculateSpeed(CurPos, OldPos, CurTime, OldTime);
+            Assert.That(_speed._speed, Is.EqualTo(expectedSpeed));
 
         }
 
