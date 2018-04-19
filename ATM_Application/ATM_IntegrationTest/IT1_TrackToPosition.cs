@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM_IntegrationTest
 {
-    public class Class1
+    public class IT1_TrackToPosition
     {
     }
 }
