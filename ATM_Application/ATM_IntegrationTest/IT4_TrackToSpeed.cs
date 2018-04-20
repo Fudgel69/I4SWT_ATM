@@ -30,7 +30,7 @@ namespace ATM_IntegrationTest
         public void TestSpeedCorrect()
         {
             double expectedSpeed = 10.00;
-            _track.UpdateTrack("Flight", _newPos, _oldtime);
+            _track.UpdateTrack("Flight", _newPos, _newtime);
             Assert.That(_track.CurrentSpeed, Is.EqualTo(expectedSpeed));
         }
 
