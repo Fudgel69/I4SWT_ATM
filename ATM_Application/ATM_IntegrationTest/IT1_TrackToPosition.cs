@@ -14,18 +14,28 @@ namespace ATM_IntegrationTest
     [TestFixture]
     public class IT1_TrackToPosition
     {
-        private IPosition _position;
-        private ITime _time;
+        private Position _position;
+        private Time _time;
         private ITrack _track;
 
         [SetUp]
         public void SetUp()
         {
-            _position = new Position();
-            _time = Substitute.For<ITime>();
-
+            _position = new Position
+            {
+                X = 20000,
+                Y = 20000,
+                Altitude = 5000
+            };
+            _time = Substitute.For<Time>();
+            _track = new Track("Dillerdallerfly", _position, _time);
         }
 
+        [Test]
+        public void CurrentPositionIsCorrectlyParsed_WhenUpdatingTrack()
+        {
+            Assert.That(_track.CurrentPosition, Is.EqualTo(_position));
+        }
 
     }
 }
