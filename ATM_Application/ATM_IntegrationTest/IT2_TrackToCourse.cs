@@ -8,7 +8,7 @@ namespace ATM_IntegrationTest
     [TestFixture]
     public class IT2_TrackToCourse
     {
-        private IPosition _position;
+        private Position _position;
         private Time _time;
         private ITrack _track;
         private ICourse _course;
