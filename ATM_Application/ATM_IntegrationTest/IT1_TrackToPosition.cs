@@ -16,7 +16,7 @@ namespace ATM_IntegrationTest
     {
         private Position _position;
         private Time _time;
-        private ITrack _track;
+        private Track _track;
 
         [SetUp]
         public void SetUp()
@@ -31,10 +31,22 @@ namespace ATM_IntegrationTest
             _track = new Track("Dillerdallerfly", _position, _time);
         }
 
+        //Testing that the correct position is parsed to currentposition in track
         [Test]
         public void CurrentPositionIsCorrectlyParsed_WhenUpdatingTrack()
         {
             Assert.That(_track.CurrentPosition, Is.EqualTo(_position));
+        }
+
+        //testing that the old position in track is not the current track.
+        [Test]
+        public void PutIntoOldPositionIsCorrect()
+        {
+            _position.Y = 10000;
+            _position.X = 10000;
+            _position.Altitude = 4000;
+            _track.UpdateTrack("Dillerdallerfly", _position, _time);
+            Assert.That(_track.OldPosition, !Is.EqualTo(_track.CurrentPosition));
         }
 
     }
