@@ -9,10 +9,10 @@ namespace ATM_IntegrationTest
     [TestFixture]
     public class IT4_TrackToSpeed
     {
-        private IPosition _newPos = new Position();
-        private IPosition _oldPos = new Position();
-        private ITime _oldtime;
-        private ITime _newtime;
+        private Position _newPos = new Position();
+        private Position _oldPos = new Position();
+        private Time _oldtime;
+        private Time _newtime;
         private ISpeed _speed;
         private ITrack _track;
 
