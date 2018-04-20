@@ -11,7 +11,7 @@ namespace ATM_Class
     {
         public void Log(string log1, string log2)
         {
-            using (StreamWriter sw = File.AppendText(".\\SepEventsLog.txt"))
+            using (StreamWriter sw = new StreamWriter(".\\SepEventsLog.txt"))
             {
                 sw.WriteLine(log1 + " & " + log2);
             }
