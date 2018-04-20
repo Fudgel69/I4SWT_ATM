@@ -32,7 +32,7 @@ namespace ATM_IntegrationTest
             _position.Y = 10000;
             _position.Altitude = 5000;
             _track.UpdateTrack("Flight", _position, _time);
-            Assert.That(_track.CurrentCourse, Is.EqualTo(45));
+            Assert.That(_track.CurrentCourse._course, Is.EqualTo(45));
         }
     }
 }

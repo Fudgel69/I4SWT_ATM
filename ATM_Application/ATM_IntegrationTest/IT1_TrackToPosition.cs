@@ -35,8 +35,11 @@ namespace ATM_IntegrationTest
         [Test]
         public void CurrentPositionIsCorrectlyParsed_WhenUpdatingTrack()
         {
-            Assert.That(_track.CurrentPosition, Is.EqualTo(_position));
+            Assert.That(_track.CurrentPosition.X, Is.EqualTo(_position.X));
+            Assert.That(_track.CurrentPosition.Y, Is.EqualTo(_position.Y));
+            Assert.That(_track.CurrentPosition.Altitude, Is.EqualTo(_position.Altitude));
         }
+
 
         //testing that the old position in track is not the current track.
         [Test]
