@@ -18,7 +18,13 @@ namespace ATM_Class
         public event TrackEnteredAirspaceHandler TrackEnteredAirspace;
 
         //En liste af trackede fly i vores monitor
-        public List<ITrack> Tracks { get; set; }
+        private List<ITrack> _Tracks { get; set; }
+
+        public List<ITrack> Tracks
+        {
+            get { return _Tracks;}
+            set { _Tracks = value; }
+        }
 
 
         //Constructor-klasse for Monitor
