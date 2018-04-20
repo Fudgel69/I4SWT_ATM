@@ -41,17 +41,21 @@ namespace ATM_Class
 
         public void CreateOrUpdate(List<String> data)
         {
+            Position _pos = new Position();
+            _pos.Altitude = int.Parse(data[1]);
+            _pos.X = int.Parse(data[2]);
+            _pos.Y = int.Parse(data[3]);
             if (Tracks.Any(track => track.Tag == data[0]))
             {
                 //Hvis flyet allerede er tracket, vil dennes data blive opdateret
                 Track TrackToUpdate = (Track)Tracks.First(track => track.Tag == data[0]);
-                TrackToUpdate.UpdateTrack(data[0], int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]), new Time(data[4]));
+                TrackToUpdate.UpdateTrack(data[0],_pos , new Time(data[4]));
                 PlaneEnteredAirspace();
             }
             else
             {
                 //Hvis ikke flyet eksisterer vil der blive skabt et nyt track af dette
-                Tracks.Add(new Track(data[0], int.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]), new Time(data[4])));
+                Tracks.Add(new Track(data[0], _pos, new Time(data[4])));
             }
         }
 

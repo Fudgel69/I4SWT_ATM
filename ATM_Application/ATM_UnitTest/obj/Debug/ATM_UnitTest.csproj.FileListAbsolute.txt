@@ -15,3 +15,4 @@ D:\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\nunit.framework.xml
 D:\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.dll
 D:\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.pdb
+D:\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\ATM_Class.dll.config

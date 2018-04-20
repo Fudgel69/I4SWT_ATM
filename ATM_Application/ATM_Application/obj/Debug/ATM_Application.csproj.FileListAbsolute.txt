@@ -6,3 +6,13 @@ D:\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csprojRes
 D:\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.pdb
 D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Application.exe
 D:\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.exe
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Application.exe.config
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\Castle.Core.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\NSubstitute.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\NSubstituteAutoMocker.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\nunit.framework.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Class.dll.config
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\nunit.framework.pdb
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\nunit.framework.xml
+D:\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\System.Threading.Tasks.Extensions.xml

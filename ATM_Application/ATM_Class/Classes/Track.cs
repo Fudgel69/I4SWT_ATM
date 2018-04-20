@@ -66,7 +66,7 @@ namespace ATM_Class
         #endregion
 
         //Track-constructor
-        public Track(string _tag, int x, int y, int _altitude, Time timestamp)
+        public Track(string _tag, Position _newPos, Time timestamp)
         {
             //Alle members sættes
             CurrentPosition = new Position();
@@ -76,9 +76,9 @@ namespace ATM_Class
 
             Tag = _tag;
 
-            CurrentPosition.X = x;
-            CurrentPosition.Y = y;
-            CurrentPosition.Altitude = _altitude;
+            CurrentPosition.X = _newPos.X;
+            CurrentPosition.Y = _newPos.Y;
+            CurrentPosition.Altitude = _newPos.Altitude;
 
             CurrentTime = new Time("00000000000000000");
             OldTime = new Time("00000000000000000");
@@ -87,16 +87,16 @@ namespace ATM_Class
         }
 
         //En metode til at opdatere et tracks members
-        public void UpdateTrack(string tag, int x, int y, int z, Time _time)
+        public void UpdateTrack(string _tag, Position _newPos, Time timestamp)
         {
             //Her anvendes en hjælpefunktion til at sætte "Old"-members
             PutIntoOld(CurrentPosition, CurrentTime);
 
-            CurrentPosition.X = x;
-            CurrentPosition.Y = y;
-            CurrentPosition.Altitude = z;
+            CurrentPosition.X = _newPos.X;
+            CurrentPosition.Y = _newPos.Y;
+            CurrentPosition.Altitude = _newPos.Altitude;
 
-            CurrentTime = _time;
+            CurrentTime = timestamp;
 
             //Hastighed og kurs udregnes
             CurrentSpeed.CalculateSpeed(CurrentPosition, OldPosition, CurrentTime, OldTime);

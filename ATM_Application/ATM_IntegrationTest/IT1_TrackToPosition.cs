@@ -23,10 +23,9 @@ namespace ATM_IntegrationTest
         {
             _position = new Position();
             _time = Substitute.For<ITime>();
-            _track = new Track();
+
         }
 
-        [Test]
-        public void 
+
     }
 }

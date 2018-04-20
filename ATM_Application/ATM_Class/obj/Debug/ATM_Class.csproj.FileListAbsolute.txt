@@ -4,6 +4,12 @@ D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\TransponderReceiver.dll
 D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csprojResolveAssemblyReference.cache
 D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.dll
 D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.pdb
-D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\GUI.g.cs
-D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class_MarkupCompile.cache
-D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class_MarkupCompile.lref
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\ATM_Class.dll.config
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\Castle.Core.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\NSubstitute.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\NSubstituteAutoMocker.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.pdb
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.xml
+D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensions.xml
