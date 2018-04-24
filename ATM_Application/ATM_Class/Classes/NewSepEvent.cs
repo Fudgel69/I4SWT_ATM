@@ -4,40 +4,46 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ATM_Class.Classes
+namespace ATM_Class
 {
     public class NewSepEvent : INotify
     {
-        private delegate void SepEventHandler(object sender, SeperationEventArgs e);
 
-        private event SepEventHandler SeperationEvent;
+        public event EventHandler<SeperationEventArgs> CrashingEvent;
+        public event EventHandler<SeperationEventArgs> NotCrashingEvent;
 
-        public void Update(List<Track> f)
+        public List<Tuple<ITrack, ITrack>> Crashing = new List<Tuple<ITrack, ITrack>>();
+
+        public void Update(List<ITrack> f)
         {
-            List<Track> _tempList = new List<Track>(f);
+            List<ITrack> _tempList = new List<ITrack>(f);
 
-            foreach (Track t in f)
+            foreach (ITrack t in f)
             {
                 if (CheckAltitude(t, _tempList[0]) && CheckHorizontalSeparation(t, _tempList[0]))
                 {
-                    var _e = new SeperationEventArgs(t.CurrentTime, t.Tag, _tempList[0].Tag);
-                    OnSeparationEvent(_e);
+                    var _e = new SeperationEventArgs(t, _tempList[0]);
+                    CrashingEvent?.Invoke(this, _e);
                 }
 
                 _tempList.RemoveAt(0);
             }
         }
 
-        private bool CheckAltitude(ITrack track1, ITrack track2)
+
+        public void DoubleCheckCollisions()
         {
-            return Math.Abs(track1.CurrentPosition.Altitude - track2.CurrentPosition.Altitude) <= 300;
+            foreach (var CRASH in Crashing.ToArray()) 
+            {
+                if (CheckAltitude(CRASH.Item1, CRASH.Item2) && CheckHorizontalSeparation(CRASH.Item1, CRASH.Item2) == false)
+                {
+                    NotCrashingEvent?.Invoke(this, new SeperationEventArgs(CRASH.Item1, CRASH.Item2));
+                    Crashing.Remove(CRASH);
+                    Console.WriteLine($"Flight: {CRASH.Item1.Tag} is on a collisioncourse with Flight: {CRASH.Item2.Tag}");
+                }
+            }
         }
 
-        private void OnSeparationEvent(SeperationEventArgs e)
-        {
-            var handler = SeperationEvent;
-            handler?.Invoke(this, e);
-        }
 
         private bool CheckHorizontalSeparation(ITrack track1, ITrack track2)
         {
@@ -45,6 +51,11 @@ namespace ATM_Class.Classes
             double y = Math.Pow(Math.Abs(track1.CurrentPosition.Y - track2.CurrentPosition.Y), 2);
 
             return Math.Sqrt(x + y) <= 5000;
+        }
+
+        private bool CheckAltitude(ITrack track1, ITrack track2)
+        {
+            return Math.Abs(track1.CurrentPosition.Altitude - track2.CurrentPosition.Altitude) <= 300;
         }
     }
 

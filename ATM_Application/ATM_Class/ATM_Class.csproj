@@ -68,7 +68,12 @@
     <Compile Include="Classes\AirspaceMonitor.cs" />
     <Compile Include="Classes\Collision.cs" />
     <Compile Include="Classes\Course.cs" />
+    <Compile Include="Classes\NewSepEvent.cs" />
+    <Compile Include="Classes\SeperationEventArgs.cs" />
+    <Compile Include="Classes\SepEventsLogToFile.cs" />
     <Compile Include="Interfaces\ICourse.cs" />
+    <Compile Include="Interfaces\ILog.cs" />
+    <Compile Include="Interfaces\INotify.cs" />
     <Compile Include="Interfaces\IPosition.cs" />
     <Compile Include="Interfaces\ISpeed.cs" />
     <Compile Include="Interfaces\ITime.cs" />

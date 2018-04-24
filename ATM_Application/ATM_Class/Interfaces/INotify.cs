@@ -8,6 +8,11 @@ namespace ATM_Class
 {
     public interface INotify
     {
-        void Update(List<Track> f);
+
+        event EventHandler<SeperationEventArgs> CrashingEvent;
+        event EventHandler<SeperationEventArgs> NotCrashingEvent;
+
+        void Update(List<ITrack> f);
+        void DoubleCheckCollisions();
     }
 }

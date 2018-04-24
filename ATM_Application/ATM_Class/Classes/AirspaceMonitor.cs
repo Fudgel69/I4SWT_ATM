@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ATM_Class.Classes;
 using TransponderReceiver;
 
 namespace ATM_Class
@@ -17,9 +18,17 @@ namespace ATM_Class
 
         public event TrackEnteredAirspaceHandler TrackEnteredAirspace;
 
+        private INotify _CrashTester { get; set; }
+
         //En liste af trackede fly i vores monitor
         private List<ITrack> _Tracks { get; set; }
 
+
+        public INotify CrashTester
+        {
+            get { return _CrashTester;}
+            set { _CrashTester = value; }
+        }
         public List<ITrack> Tracks
         {
             get { return _Tracks;}
@@ -32,10 +41,30 @@ namespace ATM_Class
         {
             _TransponderReceiver = transponderReceiver;
             Tracks = new List<ITrack>();
+            CrashTester = new NewSepEvent();
 
+            CrashTester.CrashingEvent += DetectorOnSeparationEvent;
+            CrashTester.NotCrashingEvent += DetectorOnNoSeperationEvent;
             //Subscriber til et event
             transponderReceiver.TransponderDataReady += TransponderDataEvent; 
         }
+
+
+        private void DetectorOnNoSeperationEvent(object sender, SeperationEventArgs e)
+        {
+            e.CrashingTrackOne.Crashing = false;
+            e.CrashingTrackTwo.Crashing = false;
+
+        }
+
+        private void DetectorOnSeparationEvent(object sender, SeperationEventArgs e)
+        {
+            e.CrashingTrackOne.Crashing = true;
+            e.CrashingTrackOne.OldCrashTime = e.CrashingTrackOne.CrashTime;
+            e.CrashingTrackTwo.Crashing = true;
+            e.CrashingTrackTwo.OldCrashTime = e.CrashingTrackOne.CrashTime;
+        }
+
 
         //Et fly er inde i det valgte område
         protected virtual void PlaneEnteredAirspace()
@@ -83,7 +112,8 @@ namespace ATM_Class
                         t.PrintTrack();
                     }
                 }
-
+                CrashTester.DoubleCheckCollisions();
+                CrashTester.Update(Tracks);
             }
         }
     }

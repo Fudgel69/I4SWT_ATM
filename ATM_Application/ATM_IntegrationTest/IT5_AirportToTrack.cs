@@ -135,7 +135,5 @@ namespace ATM_IntegrationTest
             Assert.That(_airspaceMonitor.Tracks[0].CurrentSpeed._speed, Is.EqualTo(_trackOne.CurrentSpeed._speed));
         }
 
-
-
     }
 }

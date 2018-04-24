@@ -6,27 +6,15 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    class SeperationEventArgs : EventArgs
+    public class SeperationEventArgs : EventArgs
     {
-        private Time currentTime;
-        private string tag1;
-        private string tag2;
+        public ITrack CrashingTrackOne { get; set; }
+        public ITrack CrashingTrackTwo { get; set; }
 
-        public SeperationEventArgs(Time currentTime, string tag1, string tag2)
+        public SeperationEventArgs(ITrack tOne, ITrack tTwo)
         {
-            this.currentTime = currentTime;
-            this.tag1 = tag1;
-            this.tag2 = tag2;
-        }
-
-        public Time GetTime()
-        {
-            return currentTime;
-        }
-
-        public string GetTags()
-        {
-            return tag1 + tag2;
+            CrashingTrackOne = tOne;
+            CrashingTrackTwo = tTwo;
         }
     }
 }

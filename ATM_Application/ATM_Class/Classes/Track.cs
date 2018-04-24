@@ -19,6 +19,12 @@ namespace ATM_Class
         private Time _CurrentTime { get; set; }
         private Time _OldTime { get; set; }
 
+
+        private Time _OldCrashTime { get; set; }
+
+        private Time _CrashTime { get; set; }
+        private bool _Crashing { get; set; }
+
         //I denne region er der lavet get- og set-metoder til alle de private members
         #region Get/Set metoder
 
@@ -62,6 +68,23 @@ namespace ATM_Class
         {
             get => _OldTime;
             set => _OldTime = value;
+        }
+
+        public Time OldCrashTime
+        {
+            get => _OldCrashTime;
+            set => _OldCrashTime = value;
+        }
+
+        public Time CrashTime
+        {
+            get => _CrashTime;
+            set => _CrashTime = value;
+        }
+        public bool Crashing
+        {
+            get => _Crashing;
+            set => _Crashing = value;
         }
         #endregion
 
