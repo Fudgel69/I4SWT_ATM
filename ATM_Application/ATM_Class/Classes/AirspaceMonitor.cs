@@ -48,9 +48,9 @@ namespace ATM_Class
         public void CreateOrUpdate(List<String> data)
         {
             Position _pos = new Position();
-            _pos.Altitude = int.Parse(data[1]);
-            _pos.X = int.Parse(data[2]);
-            _pos.Y = int.Parse(data[3]);
+            _pos.X = int.Parse(data[1]);
+            _pos.Y = int.Parse(data[2]);
+            _pos.Altitude = int.Parse(data[3]);
             if (Tracks.Any(track => track.Tag == data[0]))
             {
                 //Hvis flyet allerede er tracket, vil dennes data blive opdateret
