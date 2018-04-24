@@ -8,7 +8,7 @@ namespace ATM_IntegrationTest
 {
 
     [TestFixture]
-    public class IT5_AirportToTrack
+    public class IT5_AirSpaceMonitorToTrack
     {
 
 

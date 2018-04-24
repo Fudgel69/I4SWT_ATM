@@ -21,27 +21,21 @@ namespace ATM_IntegrationTest
         private INotify _collisionDetector;
         private AirspaceMonitor _airspaceMonitor;
 
-        private RawTransponderDataEventArgs _eventArgs_1;
-        private RawTransponderDataEventArgs _eventArgs_2;
-        private RawTransponderDataEventArgs _eventArgs_3;
 
         [SetUp]
         public void SetUp()
         {
 
-            _pos.SetPosition(39045, 12932, 14000);
-            _time = new Time("20151006213456789");
+            _pos.SetPosition(10000, 10000, 10000);
+            _time = new Time("20181010105111111");
             _trackOne = new Track("ABC123", _pos, _time);
             _trackTwo = new Track("XYZ789", _pos, _time);
-            _trackThree = new Track("Hejsa", _pos, _time);
+            _trackThree = new Track("DFG567", _pos, _time);
 
             _receiver = Substitute.For<ITransponderReceiver>();
             _airspaceMonitor = new AirspaceMonitor(_receiver);
 
-            _eventArgs_1 = new RawTransponderDataEventArgs(new List<string>() { "ABC123;39045;12933;14003;20151006213456789" });
-            _eventArgs_2 = new RawTransponderDataEventArgs(new List<string>() { "XYZ789;39044;12932;14002;20151006213456789" });
-            _eventArgs_3 = new RawTransponderDataEventArgs(new List<string>() { "Hejsa;39043;12931;14001;20151006213456789" });
-
+            
 
 
         }
@@ -50,11 +44,15 @@ namespace ATM_IntegrationTest
         [Test]
         public void NoCollisionOnePlane()
         {
-            bool raised = false;
-            // Insert values equal to _plane_1
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+            var TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+            };
 
-            Raise.EventWith(new object(), _eventArgs_1);
+            bool raised = false;
+
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
+
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
 
             _airspaceMonitor.CrashTester.Update(_airspaceMonitor.Tracks);
@@ -66,11 +64,16 @@ namespace ATM_IntegrationTest
         [Test]
         public void CollisionTwoPlanes()
         {
+            var TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
+                $"{_trackTwo.Tag};{_trackTwo.CurrentPosition.X};{_trackTwo.CurrentPosition.Y};{_trackTwo.CurrentPosition.Altitude};{_trackTwo.CurrentTime.Year}{_trackTwo.CurrentTime.Month}{_trackTwo.CurrentTime.Day}{_trackTwo.CurrentTime.Hour}{_trackTwo.CurrentTime.Minute}{_trackTwo.CurrentTime.Second}{_trackTwo.CurrentTime.MilliSecond}"
+            };
+
             bool raised = false;
 
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
             Assert.That(raised);
         }
@@ -79,13 +82,17 @@ namespace ATM_IntegrationTest
         [Test]
         public void CollisionThreePlanes()
         {
+            var TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
+                $"{_trackTwo.Tag};{_trackTwo.CurrentPosition.X};{_trackTwo.CurrentPosition.Y};{_trackTwo.CurrentPosition.Altitude};{_trackTwo.CurrentTime.Year}{_trackTwo.CurrentTime.Month}{_trackTwo.CurrentTime.Day}{_trackTwo.CurrentTime.Hour}{_trackTwo.CurrentTime.Minute}{_trackTwo.CurrentTime.Second}{_trackTwo.CurrentTime.MilliSecond}",
+                $"{_trackThree.Tag};{_trackThree.CurrentPosition.X};{_trackThree.CurrentPosition.Y};{_trackThree.CurrentPosition.Altitude};{_trackThree.CurrentTime.Year}{_trackThree.CurrentTime.Month}{_trackThree.CurrentTime.Day}{_trackThree.CurrentTime.Hour}{_trackThree.CurrentTime.Minute}{_trackThree.CurrentTime.Second}{_trackThree.CurrentTime.MilliSecond}"
+            };
+
             int raised = 0;
-            bool rased = false;
 
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised += 1;
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_3);
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
             Assert.That(raised, Is.EqualTo(3));
         }
@@ -94,17 +101,23 @@ namespace ATM_IntegrationTest
         [Test]
         public void RemoveOneCollision()
         {
-            RawTransponderDataEventArgs _eventArgs_4 = new RawTransponderDataEventArgs(new List<string>(){"ABC123;30045;12933;14003;20151006213457789"});
-
+            var TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
+                $"{_trackTwo.Tag};{_trackTwo.CurrentPosition.X};{_trackTwo.CurrentPosition.Y};{_trackTwo.CurrentPosition.Altitude};{_trackTwo.CurrentTime.Year}{_trackTwo.CurrentTime.Month}{_trackTwo.CurrentTime.Day}{_trackTwo.CurrentTime.Hour}{_trackTwo.CurrentTime.Minute}{_trackTwo.CurrentTime.Second}{_trackTwo.CurrentTime.MilliSecond}"
+            };
             bool raised = false;
 
-            _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
+            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised = true;
 
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
+            TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
+                $"{_trackTwo.Tag};{_trackTwo.CurrentPosition.X + 10000};{_trackTwo.CurrentPosition.Y + 10000};{_trackTwo.CurrentPosition.Altitude + 10000};{_trackTwo.CurrentTime.Year}{_trackTwo.CurrentTime.Month}{_trackTwo.CurrentTime.Day}{_trackTwo.CurrentTime.Hour}{_trackTwo.CurrentTime.Minute}{_trackTwo.CurrentTime.Second}{_trackTwo.CurrentTime.MilliSecond}"
+            };
 
-
-            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_4);
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
             Assert.That(raised);
         }
