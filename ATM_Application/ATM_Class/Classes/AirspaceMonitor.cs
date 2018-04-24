@@ -4,14 +4,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using ATM_Class.Classes;
+using ATM_Class;
 using TransponderReceiver;
 
 namespace ATM_Class
 {
     public class AirspaceMonitor
     {
-        ITransponderReceiver _TransponderReceiver;
+        public ITransponderReceiver _TransponderReceiver;
 
         public delegate void TrackEnteredAirspaceHandler();
         public delegate void TrackLeftAirspaceHandler();

@@ -21,10 +21,6 @@ namespace ATM_IntegrationTest
         private INotify _collisionDetector;
         private AirspaceMonitor _airspaceMonitor;
 
-        private Track _plane_1;
-        private Track _plane_2;
-        private Track _plane_3;
-
         private RawTransponderDataEventArgs _eventArgs_1;
         private RawTransponderDataEventArgs _eventArgs_2;
         private RawTransponderDataEventArgs _eventArgs_3;
@@ -49,6 +45,70 @@ namespace ATM_IntegrationTest
 
 
         }
+
+        [Test]
+        public void NoCollisionOnePlane()
+        {
+            bool raised = false;
+            // Insert values equal to _plane_1
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+
+            Raise.EventWith(new object(), _eventArgs_1);
+            _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
+
+            _airspaceMonitor.CrashTester.Update(_airspaceMonitor.Tracks);
+
+            Assert.That(raised == false);
+        }
+
+        [Test]
+        public void CollisionTwoPlanes()
+        {
+            bool raised = false;
+
+            _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+
+            Assert.That(raised);
+        }
+
+        [Test]
+        public void CollisionThreePlanes()
+        {
+            int raised = 0;
+            bool rased = false;
+
+            _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised += 1;
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_3);
+
+            Assert.That(raised, Is.EqualTo(3));
+        }
+
+        [Test]
+        public void RemoveOneCollision()
+        {
+            RawTransponderDataEventArgs _eventArgs_4 =
+                new RawTransponderDataEventArgs(new List<string>()
+                { "ABC123;30045;12933;14003;20151006213457789" });
+
+            bool raised = false;
+
+            _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
+
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+
+
+            // Change coords of _plane_1
+            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_4);
+
+            Assert.That(raised);
+        }
+
+
 
     }
 }
