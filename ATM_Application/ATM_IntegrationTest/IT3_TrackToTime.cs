@@ -24,6 +24,7 @@ namespace ATM_IntegrationTest
             _track = new Track("Flight", _position, _time);
         }
 
+        //Tester at tiden rent faktisk bliver sat ind i flyet
         [Test]
         public void TestTimeInTrack()
         {
@@ -38,6 +39,7 @@ namespace ATM_IntegrationTest
 
         }
 
+        //Tester at UpdateTrack opdaterer tiden
         [Test]
         public void TestTimeInTrackUpdated()
         {
@@ -53,6 +55,7 @@ namespace ATM_IntegrationTest
 
         }
 
+        //Tester, at når tiden bliver opdateret, kan oldtime bruges til at udregne en tidsforskel
         [Test]
         public void TestTimeInTrackDayPassed()
         {

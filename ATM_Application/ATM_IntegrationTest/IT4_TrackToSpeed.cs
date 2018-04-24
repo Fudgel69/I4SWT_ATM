@@ -26,6 +26,8 @@ namespace ATM_IntegrationTest
             _track = new Track("Flight", _oldPos, _oldtime);
 
         }
+
+        //Tester at hastigheden bliver sat korrekt
         [Test]
         public void TestSpeedCorrect()
         {

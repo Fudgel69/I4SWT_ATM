@@ -46,6 +46,7 @@ namespace ATM_IntegrationTest
 
         }
 
+        //Tester om der kommer et kollision-event kommer hvis der kun kommer ét fly
         [Test]
         public void NoCollisionOnePlane()
         {
@@ -61,6 +62,7 @@ namespace ATM_IntegrationTest
             Assert.That(raised == false);
         }
 
+        //Tester om der kommer et kollisions-event hvis to fly er ved at støde sammen
         [Test]
         public void CollisionTwoPlanes()
         {
@@ -73,6 +75,7 @@ namespace ATM_IntegrationTest
             Assert.That(raised);
         }
 
+        //Tester om der kommer tre kollisions-events hvis tre fly er ved at støde sammen
         [Test]
         public void CollisionThreePlanes()
         {
@@ -87,12 +90,11 @@ namespace ATM_IntegrationTest
             Assert.That(raised, Is.EqualTo(3));
         }
 
+        //Tester om en kollision bliver fjernet hvis et fly ikke længere er i kollision
         [Test]
         public void RemoveOneCollision()
         {
-            RawTransponderDataEventArgs _eventArgs_4 =
-                new RawTransponderDataEventArgs(new List<string>()
-                { "ABC123;30045;12933;14003;20151006213457789" });
+            RawTransponderDataEventArgs _eventArgs_4 = new RawTransponderDataEventArgs(new List<string>(){"ABC123;30045;12933;14003;20151006213457789"});
 
             bool raised = false;
 
@@ -102,7 +104,6 @@ namespace ATM_IntegrationTest
             _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
 
 
-            // Change coords of _plane_1
             _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_4);
 
             Assert.That(raised);

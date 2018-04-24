@@ -34,7 +34,7 @@ namespace ATM_IntegrationTest
 
         }
 
-
+        //Tester hvorom et nyt fly bliver tilføjet hvis et event raises med dette
         [Test]
         public void NewTrack()
         {
@@ -49,6 +49,7 @@ namespace ATM_IntegrationTest
             Assert.That(_airspaceMonitor.Tracks[0].Tag, Is.EqualTo(_trackOne.Tag));
         }
 
+        //Tester at der kan lægges to seperate tracks ind i Airports track-liste
         [Test]
         public void TwoNewTracks()
         {
@@ -66,6 +67,7 @@ namespace ATM_IntegrationTest
             Assert.That(_airspaceMonitor.Tracks[1].Tag, Is.EqualTo(_trackTwo.Tag));
         }
 
+        //Tester om et fly bliver opdateret når et event raises med dette
         [Test]
         public void UpdateTrack()
         {
@@ -90,6 +92,7 @@ namespace ATM_IntegrationTest
             Assert.That(_airspaceMonitor.Tracks[0].CurrentPosition.Altitude, Is.EqualTo(_trackOne.CurrentPosition.Altitude));
         }
 
+        //Tester om en opdatering af et fly vil give den en kurs
         [Test]
         public void UpdateTrackMakesCourse()
         {
@@ -112,6 +115,7 @@ namespace ATM_IntegrationTest
             Assert.That(_airspaceMonitor.Tracks[0].CurrentCourse._course, Is.EqualTo(_trackOne.CurrentCourse._course));
         }
 
+        //Tester om en opdatering af et fly vil give den en hastighed
         [Test]
         public void UpdateTrackMakesSpeed()
         {

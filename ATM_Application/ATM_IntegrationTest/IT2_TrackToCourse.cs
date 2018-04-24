@@ -25,6 +25,7 @@ namespace ATM_IntegrationTest
             _track = new Track("Flight", _position, _time );
         }
 
+        //Tester at hvis positionen bliver lavet om, vil der også blive lavet en kurs
         [Test]
         public void TestCourseCorrect()
         {
