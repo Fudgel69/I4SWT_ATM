@@ -1,42 +1,97 @@
-﻿using ATM_Class;
+﻿using System.Collections.Generic;
+using ATM_Class;
 using NSubstitute;
 using NUnit.Framework;
 using TransponderReceiver;
 
 namespace ATM_IntegrationTest
 {
+
+    [TestFixture]
     public class IT5_AirportToTrack
     {
 
-        [TestFixture]
-        public class IT4_TrackToSpeed
+
+
+        private Position _pos = new Position();
+        private Time _time;
+        private ISpeed _speed;
+        private Track _trackOne;
+        private ITrack _trackTwo;
+        private ITransponderReceiver _receiver;
+        private AirspaceMonitor _airspaceMonitor;
+
+        [SetUp]
+        public void SetUp()
         {
-            private Position _newPos = new Position();
-            private Position _oldPos = new Position();
-            private Time _timeOne;
-            private Time _timeTwo;
-            private ISpeed _speed;
-            private ITrack _trackOne;
-            private ITrack _trackTwo;
-            private ITransponderReceiver _receiver;
-            private AirspaceMonitor _airspaceMonitor;
+            _pos.SetPosition(20000, 20000, 10000);
+            _time = new Time("20181010105111111");
+            _trackOne = new Track("ABC123", _pos, _time);
 
-            [SetUp]
-            public void SetUp()
+            _receiver = Substitute.For<ITransponderReceiver>();
+            _airspaceMonitor = new AirspaceMonitor(_receiver);
+
+        }
+
+
+        [Test]
+        public void NewTrack()
+        {
+            var TRACK = new List<string>
+                {
+                    $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+                };
+
+
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
+
+            Assert.That(_airspaceMonitor.Tracks[0].Tag, Is.EqualTo(_trackOne.Tag));
+        }
+
+        [Test]
+        public void UpdateTrack()
+        {
+            var TRACK = new List<string>
             {
-                _newPos.SetPosition(56000, 20000, 10000);
-                _oldPos.SetPosition(20000, 20000, 10000);
-                _timeOne = new Time("20181004095100000");
-                _timeTwo = new Time("20181004085100000");
-                _trackOne = new Track("Flight", _oldPos, _timeTwo);
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+            };
 
-                _receiver = Substitute.For<ITransponderReceiver>();
-                _airspaceMonitor = new AirspaceMonitor(_receiver);
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
-            }
+            _pos.SetPosition(10000, 10000, 10000);
+            _trackOne.UpdateTrack("ABC123", _pos, _time);
+            TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+            };
 
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
+            Assert.That(_airspaceMonitor.Tracks[0].CurrentPosition.X, Is.EqualTo(_trackOne.CurrentPosition.X));
+            Assert.That(_airspaceMonitor.Tracks[0].CurrentPosition.Y, Is.EqualTo(_trackOne.CurrentPosition.Y));
+            Assert.That(_airspaceMonitor.Tracks[0].CurrentPosition.Altitude, Is.EqualTo(_trackOne.CurrentPosition.Altitude));
+        }
 
+        [Test]
+        public void UpdateTrackMakesCourse()
+        {
+            var TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+            };
+
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
+
+            _pos.SetPosition(10000, 10000, 10000);
+            _trackOne.UpdateTrack("ABC123", _pos, _time);
+            TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+            };
+
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
+
+            Assert.That(_airspaceMonitor.Tracks[0].CurrentCourse._course, Is.EqualTo(_trackOne.CurrentCourse._course));
         }
 
     }
