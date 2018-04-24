@@ -67,8 +67,8 @@ namespace ATM_IntegrationTest
             bool raised = false;
 
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
 
             Assert.That(raised);
         }
@@ -80,9 +80,9 @@ namespace ATM_IntegrationTest
             bool rased = false;
 
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised += 1;
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_3);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_3);
 
             Assert.That(raised, Is.EqualTo(3));
         }
@@ -98,12 +98,12 @@ namespace ATM_IntegrationTest
 
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
 
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_1);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_2);
 
 
             // Change coords of _plane_1
-            _airspaceMonitor._TransponderReceiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_4);
+            _receiver.TransponderDataReady += Raise.EventWith(new object(), _eventArgs_4);
 
             Assert.That(raised);
         }
