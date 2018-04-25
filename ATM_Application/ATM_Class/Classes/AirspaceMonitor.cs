@@ -18,13 +18,13 @@ namespace ATM_Class
 
         public event TrackEnteredAirspaceHandler TrackEnteredAirspace;
 
-        private INotify _CrashTester { get; set; }
+        private INewSepEvent _CrashTester { get; set; }
 
         //En liste af trackede fly i vores monitor
         private List<ITrack> _Tracks { get; set; }
 
 
-        public INotify CrashTester
+        public INewSepEvent CrashTester
         {
             get { return _CrashTester;}
             set { _CrashTester = value; }

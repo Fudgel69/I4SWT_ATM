@@ -8,7 +8,7 @@ using TransponderReceiver;
 namespace ATM_IntegrationTest
 {
     [TestFixture]
-    public class IT6_CollisionToAirport
+    public class IT7_CollisionToAirspaceMonitor
     {
 
         private Position _pos = new Position();

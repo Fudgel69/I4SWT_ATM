@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    public class NewSepEvent : INotify
+    public class NewSepEvent : INewSepEvent
     {
-
+        private readonly ILog _log;
         public event EventHandler<SeperationEventArgs> CrashingEvent;
         public event EventHandler<SeperationEventArgs> NotCrashingEvent;
 
         public List<Tuple<ITrack, ITrack>> Crashing = new List<Tuple<ITrack, ITrack>>();
+
+        public NewSepEvent()
+        {
+        }
 
         //Gennemgår alle fly og ser, om der er nogen der kolliderer
         public void Update(List<ITrack> t)
