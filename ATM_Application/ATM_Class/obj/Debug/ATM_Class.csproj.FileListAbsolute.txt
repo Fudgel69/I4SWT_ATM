@@ -13,7 +13,6 @@ D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensio
 D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.pdb
 D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.xml
 D:\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csprojResolveAssemblyReference.cache
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csproj.CoreCompileInputs.cache
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.dll
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.pdb
