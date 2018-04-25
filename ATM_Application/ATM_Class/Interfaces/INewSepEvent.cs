@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    public interface INotify
+    public interface INewSepEvent
     {
 
         event EventHandler<SeperationEventArgs> CrashingEvent;

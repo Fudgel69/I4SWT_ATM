@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ATM_Class
 {
-    interface ILog
+    public interface ILog
     {
         void Log(string log1, string log2);
+        void CrashingSepHandler(object sender, SeperationEventArgs args);
     }
 }

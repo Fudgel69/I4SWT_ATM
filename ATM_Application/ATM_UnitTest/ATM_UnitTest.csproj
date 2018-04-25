@@ -66,6 +66,7 @@
     <Compile Include="AirspaceMonitorTest.cs" />
     <Compile Include="CollisionTest.cs" />
     <Compile Include="CourseTest.cs" />
+    <Compile Include="LogTest.cs" />
     <Compile Include="PositionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpeedTest.cs" />
