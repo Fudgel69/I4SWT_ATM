@@ -14,43 +14,41 @@ namespace ATM_Class
 
         public List<Tuple<ITrack, ITrack>> Crashing = new List<Tuple<ITrack, ITrack>>();
 
-        public void Update(List<ITrack> f)
+        //Gennemgår alle fly og ser, om der er nogen der kolliderer
+        public void Update(List<ITrack> t)
         {
-            List<ITrack> _tempList = new List<ITrack>(f);
-
-            foreach (ITrack t in f)
+            for (var i = 0; i < t.Count - 1; ++i)
             {
-                if (_tempList[0].Tag != t.Tag)
+                for (var x = i + 1; x < t.Count; ++x)
                 {
-                    if (CheckAltitude(t, _tempList[0]) && CheckHorizontalSeparation(t, _tempList[0]))
+                    if (CheckAltitude(t[x], t[i]) && CheckHorizontalSeparation(t[x], t[i]) && !Crashing.Contains(Tuple.Create(t[i], t[x])))
                     {
-                        Crashing.Add(Tuple.Create(t, _tempList[0]));
-                        var _e = new SeperationEventArgs(t, _tempList[0]);
-                        CrashingEvent?.Invoke(this, _e);
+                        {
+                            //Hvis to fly er ved at kollidere lægges de i Crashing
+                            Crashing.Add(Tuple.Create(t[i], t[x]));
+                            CrashingEvent?.Invoke(this, new SeperationEventArgs(t[i], t[x]));
+
+                        }
                     }
                 }
-                
-
-                _tempList.RemoveAt(0);
             }
         }
 
-
+        //Ser om der er nogle fly der skal fjernes fra Crashing, hvis de ikke kolliderer længere
         public void DoubleCheckCollisions()
         {
-            foreach (var CRASH in Crashing.ToArray()) 
+
+            foreach (var CRASH in Crashing.ToArray())
             {
-                if (CheckAltitude(CRASH.Item1, CRASH.Item2) && CheckHorizontalSeparation(CRASH.Item1, CRASH.Item2) == false)
+                if ((CheckAltitude(CRASH.Item1, CRASH.Item2) && CheckHorizontalSeparation(CRASH.Item1, CRASH.Item2)) == false)
                 {
-                    var _e = new SeperationEventArgs(CRASH.Item1, CRASH.Item2);
-                    NotCrashingEvent?.Invoke(this, _e);
+                    NotCrashingEvent?.Invoke(this, new SeperationEventArgs(CRASH.Item1, CRASH.Item2));
                     Crashing.Remove(CRASH);
-                    Console.WriteLine($"Flight: {CRASH.Item1.Tag} is on a collisioncourse with Flight: {CRASH.Item2.Tag}");
                 }
             }
         }
 
-
+        //Returnerer true hvis to fly er indenfor 5000 m horisontalt
         private bool CheckHorizontalSeparation(ITrack track1, ITrack track2)
         {
             double x = Math.Pow(Math.Abs(track1.CurrentPosition.X - track2.CurrentPosition.X), 2);
@@ -59,6 +57,7 @@ namespace ATM_Class
             return Math.Sqrt(x + y) <= 5000;
         }
 
+        //Returnerer true hvis to fly er indenfor 300 m vertikalt
         private bool CheckAltitude(ITrack track1, ITrack track2)
         {
             return Math.Abs(track1.CurrentPosition.Altitude - track2.CurrentPosition.Altitude) <= 300;
