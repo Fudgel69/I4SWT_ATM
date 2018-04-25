@@ -18,7 +18,6 @@ namespace ATM_IntegrationTest
         private Track _trackTwo;
         private Track _trackThree;
         private ITransponderReceiver _receiver;
-        private INotify _collisionDetector;
         private AirspaceMonitor _airspaceMonitor;
 
 
@@ -75,7 +74,8 @@ namespace ATM_IntegrationTest
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
             _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
-            Assert.That(raised);
+            //Assert.That(raised);
+            Assert.That(_airspaceMonitor.Tracks[0].Crashing);
         }
 
         //Tester om der kommer tre kollisions-events hvis tre fly er ved at støde sammen

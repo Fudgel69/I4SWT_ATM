@@ -13,9 +13,6 @@ namespace ATM_Class
         Course CurrentCourse { get; set; }
         Position CurrentPosition { get; set; }
         Speed CurrentSpeed { get; set; }
-        Time OldCrashTime { get; set; }
-
-        Time CrashTime { get; set; }
         bool Crashing { get; set; }
 
         void UpdateTrack(string tag, Position _pos, Time _time);

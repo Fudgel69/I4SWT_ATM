@@ -39,30 +39,29 @@ namespace ATM_Class
         //Constructor-klasse for Monitor
         public AirspaceMonitor(ITransponderReceiver transponderReceiver)
         {
-            _TransponderReceiver = transponderReceiver;
-            Tracks = new List<ITrack>();
             CrashTester = new NewSepEvent();
 
-            CrashTester.CrashingEvent += DetectorOnSeparationEvent;
-            CrashTester.NotCrashingEvent += DetectorOnNoSeperationEvent;
+            CrashTester.CrashingEvent += DetectSeperation;
+            CrashTester.NotCrashingEvent += DetectNoSeperation;
+            _TransponderReceiver = transponderReceiver;
+            Tracks = new List<ITrack>();
+
             //Subscriber til et event
             transponderReceiver.TransponderDataReady += TransponderDataEvent; 
         }
 
 
-        private void DetectorOnNoSeperationEvent(object sender, SeperationEventArgs e)
+        private void DetectNoSeperation(object sender, SeperationEventArgs e)
         {
             e.CrashingTrackOne.Crashing = false;
             e.CrashingTrackTwo.Crashing = false;
 
         }
 
-        private void DetectorOnSeparationEvent(object sender, SeperationEventArgs e)
+        private void DetectSeperation(object sender, SeperationEventArgs e)
         {
             e.CrashingTrackOne.Crashing = true;
-            e.CrashingTrackOne.OldCrashTime = e.CrashingTrackOne.CrashTime;
             e.CrashingTrackTwo.Crashing = true;
-            e.CrashingTrackTwo.OldCrashTime = e.CrashingTrackOne.CrashTime;
         }
 
 
@@ -112,9 +111,9 @@ namespace ATM_Class
                         t.PrintTrack();
                     }
                 }
-                CrashTester.DoubleCheckCollisions();
-                CrashTester.Update(Tracks);
             }
+            CrashTester.DoubleCheckCollisions();
+            CrashTester.Update(Tracks);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace ATM_Class
             {
                 if (CheckAltitude(t, _tempList[0]) && CheckHorizontalSeparation(t, _tempList[0]))
                 {
+                    Crashing.Add(Tuple.Create(t, _tempList[0]));
                     var _e = new SeperationEventArgs(t, _tempList[0]);
                     CrashingEvent?.Invoke(this, _e);
                 }
