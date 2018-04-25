@@ -56,7 +56,7 @@ namespace ATM_IntegrationTest
 
             _airspaceMonitor.CrashTester.Update(_airspaceMonitor.Tracks);
 
-            Assert.That(raised == false);
+            Assert.That(raised, Is.EqualTo(false));
         }
 
         //Tester om der kommer et kollisions-event hvis to fly er ved at støde sammen
@@ -67,6 +67,7 @@ namespace ATM_IntegrationTest
             {
                 $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
                 $"{_trackTwo.Tag};{_trackTwo.CurrentPosition.X};{_trackTwo.CurrentPosition.Y};{_trackTwo.CurrentPosition.Altitude};{_trackTwo.CurrentTime.Year}{_trackTwo.CurrentTime.Month}{_trackTwo.CurrentTime.Day}{_trackTwo.CurrentTime.Hour}{_trackTwo.CurrentTime.Minute}{_trackTwo.CurrentTime.Second}{_trackTwo.CurrentTime.MilliSecond}"
+
             };
 
             bool raised = false;
@@ -74,8 +75,7 @@ namespace ATM_IntegrationTest
             _airspaceMonitor.CrashTester.CrashingEvent += (sender, args) => raised = true;
             _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
-            //Assert.That(raised);
-            Assert.That(_airspaceMonitor.Tracks[0].Crashing);
+            Assert.That(raised, Is.EqualTo(true));
         }
 
         //Tester om der kommer tre kollisions-events hvis tre fly er ved at støde sammen
@@ -119,7 +119,7 @@ namespace ATM_IntegrationTest
 
             _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
-            Assert.That(raised);
+            Assert.That(raised, Is.EqualTo(true));
         }
 
 

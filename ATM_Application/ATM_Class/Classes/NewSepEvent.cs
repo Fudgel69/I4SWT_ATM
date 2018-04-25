@@ -20,12 +20,16 @@ namespace ATM_Class
 
             foreach (ITrack t in f)
             {
-                if (CheckAltitude(t, _tempList[0]) && CheckHorizontalSeparation(t, _tempList[0]))
+                if (_tempList[0].Tag != t.Tag)
                 {
-                    Crashing.Add(Tuple.Create(t, _tempList[0]));
-                    var _e = new SeperationEventArgs(t, _tempList[0]);
-                    CrashingEvent?.Invoke(this, _e);
+                    if (CheckAltitude(t, _tempList[0]) && CheckHorizontalSeparation(t, _tempList[0]))
+                    {
+                        Crashing.Add(Tuple.Create(t, _tempList[0]));
+                        var _e = new SeperationEventArgs(t, _tempList[0]);
+                        CrashingEvent?.Invoke(this, _e);
+                    }
                 }
+                
 
                 _tempList.RemoveAt(0);
             }
@@ -38,7 +42,8 @@ namespace ATM_Class
             {
                 if (CheckAltitude(CRASH.Item1, CRASH.Item2) && CheckHorizontalSeparation(CRASH.Item1, CRASH.Item2) == false)
                 {
-                    NotCrashingEvent?.Invoke(this, new SeperationEventArgs(CRASH.Item1, CRASH.Item2));
+                    var _e = new SeperationEventArgs(CRASH.Item1, CRASH.Item2);
+                    NotCrashingEvent?.Invoke(this, _e);
                     Crashing.Remove(CRASH);
                     Console.WriteLine($"Flight: {CRASH.Item1.Tag} is on a collisioncourse with Flight: {CRASH.Item2.Tag}");
                 }
