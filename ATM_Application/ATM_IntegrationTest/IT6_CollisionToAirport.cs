@@ -122,7 +122,5 @@ namespace ATM_IntegrationTest
             Assert.That(raised, Is.EqualTo(1));
         }
 
-
-
     }
 }
