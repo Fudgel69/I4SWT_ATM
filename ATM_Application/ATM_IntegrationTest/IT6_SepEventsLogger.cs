@@ -14,7 +14,6 @@ namespace ATM_IntegrationTest
     {
         private NewSepEvent _newSepEvent;
         private SepEventsLogger _sepEventsLogger;
-        private int nEventsRaised;
         private Position _pos;
         private Time _time;
         private ITrack _trackOne;
@@ -25,13 +24,12 @@ namespace ATM_IntegrationTest
         [SetUp]
         public void SetUp()
         {
+            _pos = new Position();
             _pos.SetPosition(10000, 10000, 10000);
             _time = new Time("20181010105111111");
             _trackOne = new Track("ABC123", _pos, _time);
             _trackTwo = new Track("XYZ789", _pos, _time);
             _newSepEvent = new NewSepEvent();
-            _newSepEvent.CrashingEvent += delegate { nEventsRaised++; };
-            nEventsRaised = 0;
             _sepEventsLogger = new SepEventsLogger();
         }
 
@@ -39,17 +37,21 @@ namespace ATM_IntegrationTest
         [Test]
         public void TestCrashingEventInvoked()
         {
-           // var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + "SepEventsLog.txt";
-            var TRACK = new List<ITrack>();
-                TRACK.Add(_trackOne);
-                TRACK.Add(_trackTwo);
-                //$"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+
+            int nEventsRaised = 0;
+
+            _newSepEvent.CrashingEvent += delegate { nEventsRaised++; };
+            _newSepEvent.CrashingEvent += (sender, args) => nEventsRaised += 1;
+
+            var TRACK = new List<ITrack>
+            {
+                _trackOne,
+                _trackTwo
+            };
 
             _newSepEvent.Update(TRACK);
 
-            Assert.That(nEventsRaised, Is.EqualTo(1));
-
-           // Assert.IsTrue(File.Exists(path));
+            Assert.That(nEventsRaised, Is.EqualTo(2));
         }
 
     }
