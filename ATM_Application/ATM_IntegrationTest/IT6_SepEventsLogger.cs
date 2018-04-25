@@ -39,7 +39,7 @@ namespace ATM_IntegrationTest
         [Test]
         public void TestCrashingEventInvoked()
         {
-            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + "SepEventsLog.txt";
+           // var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + "SepEventsLog.txt";
             var TRACK = new List<ITrack>();
                 TRACK.Add(_trackOne);
                 TRACK.Add(_trackTwo);
@@ -47,9 +47,9 @@ namespace ATM_IntegrationTest
 
             _newSepEvent.Update(TRACK);
 
-            //Assert.That(nEventsRaised, Is.EqualTo(1));
+            Assert.That(nEventsRaised, Is.EqualTo(1));
 
-            Assert.IsTrue(File.Exists(path));
+           // Assert.IsTrue(File.Exists(path));
         }
 
     }
