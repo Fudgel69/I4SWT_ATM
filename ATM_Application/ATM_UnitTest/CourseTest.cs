@@ -27,9 +27,9 @@ namespace ATM_UnitTest
         public void TestCalculateCourseXTempOverNinty()
         {
             CurPos.SetPosition(20000, 20000, 10000);
-            OldPos.SetPosition(10000, 30000, 10000);
+            OldPos.SetPosition(30000, 5000, 10000);
 
-            double expectedCourse = 135;
+            double expectedCourse = 326.31;
             CurCourse.CalculateCourse(CurPos, OldPos);
             Assert.That(CurCourse._course, Is.EqualTo(expectedCourse));
 
