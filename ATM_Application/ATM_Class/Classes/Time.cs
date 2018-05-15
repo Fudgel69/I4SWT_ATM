@@ -19,10 +19,6 @@ namespace ATM_Class
         public int MilliSecond { get; set; }
 
         //Constructor for Time, her parses en string og udfra denne bliver de tilsvarende private members sat
-        public Time()
-        {
-
-        }
         public Time(string t)
         {
             Year = int.Parse(t.Substring(0, 4));
