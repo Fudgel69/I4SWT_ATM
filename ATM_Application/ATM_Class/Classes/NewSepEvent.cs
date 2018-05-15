@@ -8,7 +8,7 @@ namespace ATM_Class
 {
     public class NewSepEvent : INewSepEvent
     {
-        private readonly ILog _log;
+        //private readonly ILog _log;
         public event EventHandler<SeperationEventArgs> CrashingEvent;
         public event EventHandler<SeperationEventArgs> NotCrashingEvent;
 
