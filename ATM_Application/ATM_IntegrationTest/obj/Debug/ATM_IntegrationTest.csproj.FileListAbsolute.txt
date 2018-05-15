@@ -35,3 +35,23 @@ C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.csproj.CoreCompileInputs.cache
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.dll
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\ATM_IntegrationTest.dll.config
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\ATM_IntegrationTest.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\ATM_IntegrationTest.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\ATM_Class.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\Castle.Core.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\NSubstitute.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\NSubstituteAutoMocker.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\nunit.framework.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\TransponderReceiver.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\ATM_Class.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\ATM_Class.dll.config
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\nunit.framework.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\nunit.framework.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.csprojResolveAssemblyReference.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.csproj.CoreCompileInputs.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.csproj.CopyComplete
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.pdb

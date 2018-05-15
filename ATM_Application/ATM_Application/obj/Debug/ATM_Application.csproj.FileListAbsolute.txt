@@ -37,3 +37,23 @@ C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Application\obj\Deb
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.pdb
 D:\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csproj.CoreCompileInputs.cache
 D:\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csproj.CopyComplete
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Application.exe.config
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Application.exe
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Application.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Class.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\Castle.Core.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\NSubstitute.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\NSubstituteAutoMocker.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\nunit.framework.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\TransponderReceiver.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Class.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\ATM_Class.dll.config
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\nunit.framework.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\nunit.framework.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csprojResolveAssemblyReference.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csproj.CoreCompileInputs.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csproj.CopyComplete
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.exe
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.pdb

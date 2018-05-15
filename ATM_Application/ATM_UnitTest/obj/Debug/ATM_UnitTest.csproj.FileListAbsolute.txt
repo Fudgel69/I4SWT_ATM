@@ -35,3 +35,23 @@ C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.csproj.CoreCompileInputs.cache
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.dll
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\ATM_UnitTest.dll.config
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\ATM_UnitTest.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\ATM_UnitTest.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\ATM_Class.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\Castle.Core.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\NSubstitute.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\NSubstituteAutoMocker.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\nunit.framework.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\TransponderReceiver.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\ATM_Class.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\ATM_Class.dll.config
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\nunit.framework.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\nunit.framework.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.csprojResolveAssemblyReference.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.csproj.CoreCompileInputs.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.csproj.CopyComplete
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_UnitTest\obj\Debug\ATM_UnitTest.pdb

@@ -30,3 +30,20 @@ C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nun
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csproj.CoreCompileInputs.cache
 D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csproj.CopyComplete
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\ATM_Class.dll.config
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\ATM_Class.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\ATM_Class.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\Castle.Core.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\NSubstitute.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\NSubstituteAutoMocker.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\TransponderReceiver.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.pdb
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csprojResolveAssemblyReference.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csproj.CoreCompileInputs.cache
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csproj.CopyComplete
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.dll
+D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.pdb
