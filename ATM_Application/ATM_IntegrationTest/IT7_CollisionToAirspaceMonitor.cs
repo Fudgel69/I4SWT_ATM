@@ -10,7 +10,7 @@ namespace ATM_IntegrationTest
     [TestFixture]
     public class IT7_CollisionToAirspaceMonitor
     {
-
+        
         private Position _pos = new Position();
         private Time _time;
         private Track _trackOne;
@@ -47,15 +47,15 @@ namespace ATM_IntegrationTest
                 $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
             };
 
-            int raised = 0;
+            bool raised = true;
 
             _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
-            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised += 1;
+            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised = false;
 
             _airspaceMonitor.CrashTester.Update(_airspaceMonitor.Tracks);
 
-            Assert.That(raised, Is.EqualTo(0));
+            Assert.That(raised, Is.EqualTo(true));
         }
 
         //Tester om der kommer et kollisions-event hvis to fly er ved at støde sammen
@@ -66,7 +66,6 @@ namespace ATM_IntegrationTest
             {
                 $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
                 $"{_trackTwo.Tag};{_trackTwo.CurrentPosition.X};{_trackTwo.CurrentPosition.Y};{_trackTwo.CurrentPosition.Altitude};{_trackTwo.CurrentTime.Year}{_trackTwo.CurrentTime.Month}{_trackTwo.CurrentTime.Day}{_trackTwo.CurrentTime.Hour}{_trackTwo.CurrentTime.Minute}{_trackTwo.CurrentTime.Second}{_trackTwo.CurrentTime.MilliSecond}"
-
             };
 
             bool raised = false;

@@ -65,8 +65,6 @@ namespace ATM_Class
         }
 
 
-
-
         public void CreateOrUpdate(List<String> data)
         {
             Position _pos = new Position();
