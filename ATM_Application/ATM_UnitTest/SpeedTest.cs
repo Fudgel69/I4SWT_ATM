@@ -21,7 +21,6 @@ namespace ATM_UnitTest
 
 
         
-
         [SetUp]
         public void Setup()
         {
