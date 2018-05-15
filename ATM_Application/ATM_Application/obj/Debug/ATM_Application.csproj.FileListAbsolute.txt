@@ -35,3 +35,5 @@ C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Application\obj\Deb
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csproj.CoreCompileInputs.cache
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.exe
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.pdb
+D:\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csproj.CoreCompileInputs.cache
+D:\I4SWT_ATM\ATM_Application\ATM_Application\obj\Debug\ATM_Application.csproj.CopyComplete

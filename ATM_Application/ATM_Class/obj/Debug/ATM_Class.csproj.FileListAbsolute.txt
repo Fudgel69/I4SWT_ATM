@@ -28,3 +28,5 @@ C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\Tra
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.pdb
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\nunit.framework.xml
 C:\Users\mabui\Desktop\IKT\SWT\I4SWT_ATM\ATM_Application\ATM_Class\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csproj.CoreCompileInputs.cache
+D:\I4SWT_ATM\ATM_Application\ATM_Class\obj\Debug\ATM_Class.csproj.CopyComplete
