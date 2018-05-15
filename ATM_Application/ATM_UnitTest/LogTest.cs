@@ -38,7 +38,7 @@ namespace ATM_UnitTest
         {
             var uut = new SepEventsLogger();
             uut.Log("ABC123", "DEF456");
-
+            
             var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + "NotSepEventsLog.txt";
 
             Assert.IsFalse(File.Exists(path));
