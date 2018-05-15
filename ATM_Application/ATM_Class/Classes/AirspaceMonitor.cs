@@ -65,12 +65,6 @@ namespace ATM_Class
         }
 
 
-        //Et fly er inde i det valgte område
-        //protected virtual void PlaneEnteredAirspace()
-        //{
-        //    TrackEnteredAirspace?.Invoke();
-        //    Console.WriteLine("Der kommer FLYYYYY!!");
-        //}
 
 
         public void CreateOrUpdate(List<String> data)
@@ -84,7 +78,6 @@ namespace ATM_Class
                 //Hvis flyet allerede er tracket, vil dennes data blive opdateret
                 Track TrackToUpdate = (Track)Tracks.First(track => track.Tag == data[0]);
                 TrackToUpdate.UpdateTrack(data[0],_pos , new Time(data[4]));
-                //PlaneEnteredAirspace();
             }
             else
             {
