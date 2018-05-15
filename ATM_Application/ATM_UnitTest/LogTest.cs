@@ -36,12 +36,16 @@ namespace ATM_UnitTest
         [Test]
         public void WriteFileDoesNotExist()
         {
+            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + "SepEventsLog.txt";
+            File.Delete(path);
+            Assert.IsFalse(File.Exists(path));
+
             var uut = new SepEventsLogger();
             uut.Log("ABC123", "DEF456");
-            
-            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + "NotSepEventsLog.txt";
 
-            Assert.IsFalse(File.Exists(path));
+            Assert.IsTrue(File.Exists(path));
+
+
 
         }
     }
