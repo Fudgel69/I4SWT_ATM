@@ -27,7 +27,7 @@ namespace ATM_IntegrationTest
                 Altitude = 5000
             };
             _time = Substitute.For<Time>();
-            _track = new Track("Dillerdallerfly", _position, _time);
+            _track = new Track("Flyvemaskine", _position, _time);
         }
 
         //Testing that the correct position is parsed to currentposition in track
