@@ -32,6 +32,7 @@ namespace ATM_UnitTest
             T2 = new Track("T2", pos, new Time());
         }
 
+        //Fly der ikke længere er i kollisionsfare bliver fjernet fra listen
         [Test]
         public void UpdateRemovesPlanesOutOfDanger()
         {

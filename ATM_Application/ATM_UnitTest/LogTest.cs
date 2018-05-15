@@ -29,6 +29,7 @@ namespace ATM_UnitTest
             uut = new SepEventsLogger();
         }
 
+        //Der bliver skrevet til en fil der allerede findes
         [Test]
         public void WriteFileDoesExist()
         {
@@ -41,6 +42,7 @@ namespace ATM_UnitTest
 
         }
 
+        //Der bliver skrevet til en fil der ikke allerede findes
         [Test]
         public void WriteFileDoesNotExist()
         {
@@ -55,6 +57,7 @@ namespace ATM_UnitTest
 
         }
 
+        //Der bliver skrevet til en fil der allerede findes ud fra et event
         [Test]
         public void LogNewEvent()
         {
