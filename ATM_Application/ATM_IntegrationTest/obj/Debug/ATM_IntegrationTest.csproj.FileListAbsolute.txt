@@ -55,3 +55,5 @@ D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\De
 D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.csproj.CopyComplete
 D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.dll
 D:\Skole\4. Semester\SWTHI3\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.pdb
+D:\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.csproj.CoreCompileInputs.cache
+D:\I4SWT_ATM\ATM_Application\ATM_IntegrationTest\obj\Debug\ATM_IntegrationTest.csproj.CopyComplete

@@ -12,7 +12,18 @@ namespace ATM_Class
         public event EventHandler<SeperationEventArgs> CrashingEvent;
         public event EventHandler<SeperationEventArgs> NotCrashingEvent;
 
-        public List<Tuple<ITrack, ITrack>> Crashing = new List<Tuple<ITrack, ITrack>>();
+        public List<Tuple<ITrack, ITrack>> _Crashing = new List<Tuple<ITrack, ITrack>>();
+
+        #region Public Get/Set Metoder
+        public List<Tuple<ITrack, ITrack>> Crashing
+        {
+            get { return _Crashing; }
+            set { _Crashing = value; }
+        }
+
+
+        #endregion
+
 
         public NewSepEvent()
         {
