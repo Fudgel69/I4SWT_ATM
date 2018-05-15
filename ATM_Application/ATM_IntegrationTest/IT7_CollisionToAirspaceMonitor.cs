@@ -47,35 +47,36 @@ namespace ATM_IntegrationTest
                 $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
             };
 
-            bool raised = true;
+            int raised = 0;
 
             _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
-            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised = false;
+            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised = 1;
 
             _airspaceMonitor.CrashTester.Update(_airspaceMonitor.Tracks);
 
-            Assert.That(raised, Is.EqualTo(true));
+            Assert.That(raised, Is.EqualTo(0));
         }
 
+        //Teste NoCollision
         [Test]
         public void NoCollisionTwoPlanes()
         {
             var TRACK = new List<string>
             {
                 $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
-                $"{_trackThree.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+                $"{_trackTwo.Tag};{_trackTwo.CurrentPosition.X + 10000};{_trackTwo.CurrentPosition.Y + 10000};{_trackTwo.CurrentPosition.Altitude + 10000};{_trackTwo.CurrentTime.Year}{_trackTwo.CurrentTime.Month}{_trackTwo.CurrentTime.Day}{_trackTwo.CurrentTime.Hour}{_trackTwo.CurrentTime.Minute}{_trackTwo.CurrentTime.Second}{_trackTwo.CurrentTime.MilliSecond}"
             };
 
-            bool raised = false;
+            int raised = 0;
 
             _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
 
-            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised = false;
+            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised = 1;
 
             _airspaceMonitor.CrashTester.Update(_airspaceMonitor.Tracks);
 
-            Assert.That(raised, Is.EqualTo(false));
+            Assert.That(raised, Is.EqualTo(0));
         }
 
 
