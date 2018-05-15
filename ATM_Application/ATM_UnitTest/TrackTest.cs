@@ -18,7 +18,6 @@ namespace ATM_UnitTest
         private int _y = 20000;
         private int _altitude = 10000;
         private Time _timeStamp = new Time("20181004095400000");
-
         private Track _track;
 
         private List<string> _list;
@@ -29,7 +28,6 @@ namespace ATM_UnitTest
             _pos.SetPosition(_x, _y, _altitude);
             _track = new Track(_tag, _pos, _timeStamp);
             _track.Crashing = false;
-            _track.CrashTime = new Time("20181004094400000");
         }
 
         [Test]
@@ -93,12 +91,6 @@ namespace ATM_UnitTest
         {
             _track.Crashing = true;
             Assert.True(_track.Crashing);
-        }
-        [Test]
-        public void UpdateCrashTime()
-        {
-            _track.CrashTime = _timeStamp;
-            Assert.That(_track.CrashTime, Is.EqualTo(_timeStamp)); 
         }
 
     }
