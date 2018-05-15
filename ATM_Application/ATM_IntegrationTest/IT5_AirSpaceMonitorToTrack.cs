@@ -15,7 +15,6 @@ namespace ATM_IntegrationTest
 
         private Position _pos = new Position();
         private Time _time;
-        private ISpeed _speed;
         private Track _trackOne;
         private Track _trackTwo;
         private ITransponderReceiver _receiver;

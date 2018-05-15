@@ -21,8 +21,6 @@ namespace ATM_UnitTest
 
         private Track _track;
 
-        private List<string> _list;
-
         [SetUp]
         public void Setup()
         {

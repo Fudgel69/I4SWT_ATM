@@ -13,7 +13,6 @@ namespace ATM_IntegrationTest
         private Position _oldPos = new Position();
         private Time _oldtime;
         private Time _newtime;
-        private ISpeed _speed;
         private ITrack _track;
 
         [SetUp]
