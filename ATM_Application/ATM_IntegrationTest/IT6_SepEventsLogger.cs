@@ -18,7 +18,7 @@ namespace ATM_IntegrationTest
         private Time _time;
         private ITrack _trackOne;
         private ITrack _trackTwo;
-
+        
 
 
         [SetUp]

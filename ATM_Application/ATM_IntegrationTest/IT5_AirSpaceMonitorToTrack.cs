@@ -11,7 +11,7 @@ namespace ATM_IntegrationTest
     public class IT5_AirSpaceMonitorToTrack
     {
 
-
+        
 
         private Position _pos = new Position();
         private Time _time;
