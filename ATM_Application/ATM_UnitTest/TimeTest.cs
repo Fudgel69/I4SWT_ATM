@@ -15,13 +15,24 @@ namespace ATM_UnitTest
 
         private Time t = new Time("20181004085100000");
         private Time _time = new Time("20181004095100000");
+        private Time _t = new Time();
 
         [SetUp]
         public void Setup()
         {
 
         }
-
+        [Test]
+        public void TestEmptyConstructor()
+        {
+            Assert.That(_t.Year, Is.EqualTo(0));
+            Assert.That(_t.Month, Is.EqualTo(0));
+            Assert.That(_t.Day, Is.EqualTo(0));
+            Assert.That(_t.Hour, Is.EqualTo(0));
+            Assert.That(_t.Minute, Is.EqualTo(0));
+            Assert.That(_t.Second, Is.EqualTo(00));
+            Assert.That(_t.MilliSecond, Is.EqualTo(000));
+        }
 
         [Test]
         public void TestConstructor()
