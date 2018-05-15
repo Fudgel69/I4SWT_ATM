@@ -58,6 +58,27 @@ namespace ATM_IntegrationTest
             Assert.That(raised, Is.EqualTo(true));
         }
 
+        [Test]
+        public void NoCollisionTwoPlanes()
+        {
+            var TRACK = new List<string>
+            {
+                $"{_trackOne.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}",
+                $"{_trackThree.Tag};{_trackOne.CurrentPosition.X};{_trackOne.CurrentPosition.Y};{_trackOne.CurrentPosition.Altitude};{_trackOne.CurrentTime.Year}{_trackOne.CurrentTime.Month}{_trackOne.CurrentTime.Day}{_trackOne.CurrentTime.Hour}{_trackOne.CurrentTime.Minute}{_trackOne.CurrentTime.Second}{_trackOne.CurrentTime.MilliSecond}"
+            };
+
+            bool raised = false;
+
+            _receiver.TransponderDataReady += Raise.EventWith(new RawTransponderDataEventArgs(TRACK));
+
+            _airspaceMonitor.CrashTester.NotCrashingEvent += (sender, args) => raised = false;
+
+            _airspaceMonitor.CrashTester.Update(_airspaceMonitor.Tracks);
+
+            Assert.That(raised, Is.EqualTo(false));
+        }
+
+
         //Tester om der kommer et kollisions-event hvis to fly er ved at støde sammen
         [Test]
         public void CollisionTwoPlanes()
