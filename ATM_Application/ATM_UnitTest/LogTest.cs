@@ -26,7 +26,7 @@ namespace ATM_UnitTest
             testEvent = Substitute.For<INewSepEvent>();
             T1 = Substitute.For<ITrack>();
             T2 = Substitute.For<ITrack>();
-            uut = new SepEventsLogger(testEvent);
+            uut = new SepEventsLogger();
         }
 
         [Test]
@@ -60,6 +60,8 @@ namespace ATM_UnitTest
         {
             T1.Tag.Returns("T1");
             T2.Tag.Returns("T2");
+
+            uut = new SepEventsLogger(testEvent);
 
             var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\" + "SepEventsLog.txt";
             File.Delete(path);
