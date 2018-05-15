@@ -29,7 +29,7 @@ namespace ATM_UnitTest
             Assert.That(_time.Year, Is.EqualTo(2018));
             Assert.That(_time.Month, Is.EqualTo(10));
             Assert.That(_time.Day, Is.EqualTo(04));
-            Assert.That(_time.Hour, Is.EqualTo(08));
+            Assert.That(_time.Hour, Is.EqualTo(09));
             Assert.That(_time.Minute, Is.EqualTo(51));
             Assert.That(_time.Second, Is.EqualTo(00));
             Assert.That(_time.MilliSecond, Is.EqualTo(000));
