@@ -31,8 +31,8 @@ namespace ATM_Class
         }
         public List<ITrack> Tracks
         {
-            get { return _Tracks;}
-            set { _Tracks = value; }
+            get { return _Tracks; }
+            set { }
         }
 
 
