@@ -68,8 +68,8 @@
     <Compile Include="IT3_TrackToTime.cs" />
     <Compile Include="IT4_TrackToSpeed.cs" />
     <Compile Include="IT5_AirSpaceMonitorToTrack.cs" />
-    <Compile Include="IT6_SepEventsLogger.cs" />
-    <Compile Include="IT7_CollisionToAirspaceMonitor.cs" />
+    <Compile Include="IT_SepEventsLogger.cs" />
+    <Compile Include="IT6_CollisionToAirspaceMonitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
