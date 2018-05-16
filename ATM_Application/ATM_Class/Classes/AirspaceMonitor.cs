@@ -32,7 +32,7 @@ namespace ATM_Class
         public List<ITrack> Tracks
         {
             get { return _Tracks; }
-            set { }
+            set { /*_Tracks = value;*/ }
         }
 
 
@@ -44,7 +44,7 @@ namespace ATM_Class
             CrashTester.CrashingEvent += DetectSeperation;
             CrashTester.NotCrashingEvent += DetectNoSeperation;
             _TransponderReceiver = transponderReceiver;
-            Tracks = new List<ITrack>();
+            _Tracks = new List<ITrack>();
 
             //Subscriber til et event
             transponderReceiver.TransponderDataReady += TransponderDataEvent; 
@@ -71,16 +71,16 @@ namespace ATM_Class
             _pos.X = int.Parse(data[1]);
             _pos.Y = int.Parse(data[2]);
             _pos.Altitude = int.Parse(data[3]);
-            if (Tracks.Any(track => track.Tag == data[0]))
+            if (_Tracks.Any(track => track.Tag == data[0]))
             {
                 //Hvis flyet allerede er tracket, vil dennes data blive opdateret
-                Track TrackToUpdate = (Track)Tracks.First(track => track.Tag == data[0]);
+                Track TrackToUpdate = (Track)_Tracks.First(track => track.Tag == data[0]);
                 TrackToUpdate.UpdateTrack(data[0],_pos , new Time(data[4]));
             }
             else
             {
                 //Hvis ikke flyet eksisterer vil der blive skabt et nyt track af dette
-                Tracks.Add(new Track(data[0], _pos, new Time(data[4])));
+                _Tracks.Add(new Track(data[0], _pos, new Time(data[4])));
             }
         }
 
@@ -97,14 +97,14 @@ namespace ATM_Class
                     CreateOrUpdate(data);
 
                     //Printer alle fly i Monitor-zonen når et fly bliver opdateret
-                    foreach (Track t in Tracks)
+                    foreach (Track t in _Tracks)
                     {
                         t.PrintTrack();
                     }
                 }
             }
             CrashTester.DoubleCheckCollisions();
-            CrashTester.Update(Tracks);
+            CrashTester.Update(_Tracks);
         }
     }
 }
